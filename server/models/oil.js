@@ -4,10 +4,6 @@ const Schema = mongoose.Schema;
 const oilSchema = new Schema({
     type: Object,
     properties: {
-        id: {
-            type: Number,
-            required: true
-        },
         name: {
             type: String,
             required: true
@@ -17,6 +13,10 @@ const oilSchema = new Schema({
         },
         image: {
             type: String,
+            required: true
+        },
+        highlight: {
+            type: Boolean,
             required: true
         },
         themes: {

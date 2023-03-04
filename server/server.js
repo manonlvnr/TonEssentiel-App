@@ -7,12 +7,15 @@ require("dotenv").config();
 const port = process.env.PORT || 5001;
 const mongoose = require('mongoose');
 
+
+// Main path API //routes
+const oils = require('./api/oils');
+app.use('/api/oils', oils);
+
+//middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-// Main path API
-const oils = require('./api/oils');
-app.use('/api/oils', oils);
 
 // Connect to MongoDB
 mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })

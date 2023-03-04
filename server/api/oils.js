@@ -1,21 +1,15 @@
+const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router()
-
-const Oil = require('../models/oil');
+const { getAllOils, getOneOil } = require('../controllers/oilsController');
 
 // GET /api/oils
-router.get('/', (req, res) => {
-      // Code pour récupérer tous les huiles
-    res.send('Voici toutes les huiles!');
-    User.find()
-        .then(oils => res.json(oils))
-        .catch(err => console.log(err))
-})
+// Code pour récupérer tous les huiles
+router.get('/', getAllOils);
 
 // GET /api/oils/:id
-// router.get('/:id', (req, res) => {
-//     // Code pour récupérer une huile par son id
-//   });
+// Code pour récupérer une huile par son id
+router.get('/:id', getOneOil);
 
 // POST /api/oils
 // router.post('/', (req, res) => {
@@ -35,8 +29,8 @@ router.get('/', (req, res) => {
 // })
 
 // PUT /api/oils/:id
+// Code pour mettre à jour une huile par son id
 // router.put('/:id', (req, res) => {
-//     // Code pour mettre à jour une huile par son id
 //   });
 
 module.exports = router 
