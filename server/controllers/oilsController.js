@@ -1,5 +1,7 @@
 const Oil = require('../models/oil');
 const mongoose = require('mongoose');
+
+
 // GET all oils
 const getAllOils = async (req, res) => {
     try {
@@ -34,6 +36,21 @@ const getOneOil = async (req, res) => {
 
 // POST one oil
 const createOil = async (req, res) => {
+    // const { name, description, image } = req.body;
+
+    // try {
+    //     const oil = await Oil.create({ name, description, image });
+    //     res.status(200).json({ oil, message: 'Oil created successfully!' });
+    // } catch (error) {
+    //     res.status(400).json({ error: error.message, message: 'Error creating oil' });
+    // }
+
+    // app.post("/dogs", async (req, res) => {
+    //     const newDog = new Dog({ ...req.body });
+    //     const insertedDog = await newDog.save();
+    //     return res.status(201).json(insertedDog);
+    //   });
+    
     try {
         const oil = await new Oil(req.body);
         await oil.save();

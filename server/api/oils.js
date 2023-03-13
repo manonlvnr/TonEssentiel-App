@@ -11,12 +11,12 @@ router.get('/', getAllOils);
 // Code pour récupérer une huile par son id
 router.get('/:id', getOneOil);
 
-// POST /api/oils/createOils
-router.post('/createOils', createOil); 
+// POST /api/oils/
+router.post('/', createOil); 
 
 
-// PUT /api/oils/updateOils/:id
+// PUT /api/oils/:id
 // Code pour mettre à jour une huile par son id
-router.put('/updateOils/:id', updateOil);
+router.put('/:id', updateOil);
 
 module.exports = router 
