@@ -45,20 +45,19 @@ const createOil = async (req, res) => {
     //     res.status(400).json({ error: error.message, message: 'Error creating oil' });
     // }
 
-    // app.post("/dogs", async (req, res) => {
-    //     const newDog = new Dog({ ...req.body });
-    //     const insertedDog = await newDog.save();
-    //     return res.status(201).json(insertedDog);
-    //   });
+    const newOil = await Oil.create({ ...req.body });
+    const insertedOil = await newOil.save();
+    return res.status(201).json(insertedOil);
     
-    try {
-        const oil = await new Oil(req.body);
-        await oil.save();
-        res.status(201).json({ oil, message: 'Oil created successfully!' });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: error.message, message: 'Error creating oil' });
-    }
+    
+    // try {
+    //     const oil = await new Oil(req.body);
+    //     await oil.save();
+    //     res.status(201).json({ oil, message: 'Oil created successfully!' });
+    // } catch (error) {
+    //     console.log(error);
+    //     res.status(500).json({ error: error.message, message: 'Error creating oil' });
+    // }
 }
 
 // PUT one oil
