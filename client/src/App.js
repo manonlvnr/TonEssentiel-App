@@ -5,12 +5,14 @@ import Homepage from './components/pages/Homepage/Homepage';
 import Favorites from './components/pages/Favorites/Favorites';
 import Menu from './components/pages/Menu/Menu';
 import BottomBar from './components/organisms/BottomBar/BottomBar';
+import Header from './components/organisms/Header/Header';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className=''>
+          <Header />
           <BottomBar />
           <Routes>
             <Route path='/' element={<Homepage />} />
