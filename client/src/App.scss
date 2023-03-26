@@ -1,11 +1,21 @@
 :root {
+// colors
     --bg-color-light: #F4F4F4;
     --bg-color-dark: #0E110E;
     --bg-white: #FFFFFF;
     --primary-color-light: #1D6D1D;
     --primary-color-dark: #6FA56F;
+
+// fonts-size
+    --text-xs: 0.8rem;
+    --text-sm: 1.3rem;
+    --text-md: 1.6rem;
+    --text-lg: 2rem;
+    --text-xl: 2.5rem;
+    --text-2xl: 3.1rem;
 }
 
 body {
     background-color: var(--bg-color-light);
 }
+
