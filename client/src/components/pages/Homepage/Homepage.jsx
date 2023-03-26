@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { IconArrowLeft } from '@tabler/icons-react';
+import Search from '../../molecules/Search/Search';
+import Categories from "../../molecules/Categories/Categories";
 
 
 function Homepage() {
@@ -20,16 +22,17 @@ function Homepage() {
 
     return (
         <div className='Homepage'>
-        <h1>Homepage</h1>
-        <div>
-            {oils && oils.map(oil => (
-                <div key={oil.id}>
-                    <h2>{oil.name}</h2>
-                    <p>{oil.description}</p>
-                </div>
-            ))}    
-        </div>
-            <IconArrowLeft />
+            <Search />
+            <Categories />
+            {/* <div>
+                {oils && oils.map(oil => (
+                    <div key={oil.id}>
+                        <h2>{oil.name}</h2>
+                        <p>{oil.description}</p>
+                    </div>
+                ))}    
+            </div>
+                <IconArrowLeft /> */}
         </div>
     );
 }
