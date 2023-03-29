@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IconArrowLeft } from '@tabler/icons-react';
 import Search from '../../molecules/Search/Search';
 import Categories from "../../molecules/Categories/Categories";
+import MostWanted from "../../molecules/MostWanted/MostWanted";
 
 
 function Homepage() {
@@ -24,6 +25,7 @@ function Homepage() {
         <div className='Homepage'>
             <Search />
             <Categories />
+            <MostWanted />
             {/* <div>
                 {oils && oils.map(oil => (
                     <div key={oil.id}>
