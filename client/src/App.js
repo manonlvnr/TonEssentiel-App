@@ -3,13 +3,13 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import OilsForm from './components/OilsForm';
 import Homepage from './components/pages/Homepage/Homepage';
 import Favorites from './components/pages/Favorites/Favorites';
-import Menu from './components/pages/Menu/Menu';
 import BottomBar from './components/organisms/BottomBar/BottomBar';
 import Header from './components/organisms/Header/Header';
 import Diffusions from './components/pages/Diffusions/Diffusions';
 import AllOils from './components/pages/AllOils/AllOils';
 import Themes from './components/pages/Themes/Themes';
 import Symptoms from './components/pages/Symptoms/Symptoms';
+import Menu from './components/pages/Menu/Menu';
 
 function App() {
   return (
