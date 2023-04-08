@@ -18,64 +18,41 @@ const oilSchema = new Schema({
             type: Boolean,
             // required: true
         },
-        themes: {
+        symptoms: {
             type: Array,
-            theme: {
-                type: String,
-                // required: true
-            },
-            useAlone: { 
-                type: String,
-            },
-            // useWithOthers: {
-            //     type: Object,
-            //     description: {
-            //         type: String,
-            //     },
-            //     needed: {
-            //         type: Array,
-            //         items: {
-            //             type: Number,
-            //         }
-            //     }
-            // },
-            "minItems": 1,
-            "maxItems": 4
+            symptom: {
+                type: Object,
+                name: {
+                    type: String,
+                    // required: true
+                },
+                theme: {
+                    type: String,
+                    // required: true
+                },
+                diffussions: {
+                    type: Array,
+                    diffussion: {
+                        type: Object,
+                        name: {
+                            type: String,
+                            // required: true
+                        },
+                        descriptionAlone: {
+                            type: String,
+                        },
+                        descriptionWithOthers: {
+                            type: String,
+                        },
+                    }
+                },
+            }
         },
-        // categories: {
-        //     type: Array,
-        //     category: {
-        //         type: String,
-        //         // required: true
-        //     },
-        //     useAlone: { 
-        //         type: String,
-        //     },
-        //     useWithOthers: {
-        //         type: Object,
-        //         description: {
-        //             type: String,
-        //         },
-        //         needed: {
-        //             type: Array,
-        //             items: {
-        //                 type: Number,
-        //             }
-        //         }
-        //     },
-        //     "minItems": 1,
-        //     "maxItems": 4
-        // },
-        // associations: {
-        //     type: Array,
-        //     items: {
-        //         properties: {
-        //             association: {
-        //                 type: Number,
-        //             }
-        //         }
-        //     },
-        //     "minItems": 1,
-        // },
+        OilsAssociated: {
+            type: Array,
+            OilAssociated: {
+                type: Number,
+            }
+        },
 })
 module.exports = mongoose.model("Oil", oilSchema, "oils")
