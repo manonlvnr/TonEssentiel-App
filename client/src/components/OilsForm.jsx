@@ -5,10 +5,8 @@ function OilsForm() {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
     const [highlight, setHighlight] = useState(false)
-    const [themes, setThemes] = useState([])
-    const [theme, setTheme] = useState('')
-    const [inputFields, setInputFields] = useState([
-        {theme: '', useAlone: ''}
+    const [symptomFields, setsymptomFields] = useState([
+        {symptom: '', theme: ''}
     ])  
     const [errors, setErrors] = useState(null)
 
@@ -49,15 +47,15 @@ function OilsForm() {
 
     const handleFormChange = (index, event) => {
         event.preventDefault()
-        let data = [...inputFields];
+        let data = [...symptomFields];
         data[index][event.target.name] = event.target.value;
-        setInputFields(data);
+        setsymptomFields(data);
     }
 
     const addFields = () => {
-        let newfield = { theme: '', useAlone: '' }
+        let newfield = { symptom: '', theme: '' }
     
-        setInputFields([...inputFields, newfield])
+        setsymptomFields([...symptomFields, newfield])
     }
 
     return (
@@ -99,24 +97,30 @@ function OilsForm() {
                     </select>
                 </label>
 
-                <h3>Themes</h3>
-                {inputFields.map((input, index) => {
+                <h3>Symptomes</h3>
+                {symptomFields.map((value, index) => {
                     return (
                         <label htmlFor="theme" key={index}>
-                            Theme :
-                            <select onChange={event => handleFormChange(index, event)}>
-                                <option value={input.one}>one</option>
-                                <option value={input.two}>two</option>
-                            </select>
+                            Symptom :
                             <input
-                                name='useAlone'
-                                value={input.useAlone}
+                                name='symptom'
+                                value={value.symptom}
                                 onChange={event => handleFormChange(index, event)}
-                                />
+                            />
+                            <select onChange={event => handleFormChange(index, event)}>
+                                <option value="Bien-être">Bien-être</option>
+                                <option value="Beauté">Beauté</option>
+                                <option value="Parfum">Parfum</option>
+                                <option value="Cuisine">Cuisine</option>
+                                <option value="Hygiène maison">Hygiène maison</option>
+                                <option value="Santé">Santé</option>
+                            </select>
                         </label>
                     )
                 })}
                 <button onClick={addFields}>Add More..</button>
+
+
                 <button type="submit" onClick={handleSubmit}>Submit</button>
             </form>
             {errors && <div>{errors}</div>}
