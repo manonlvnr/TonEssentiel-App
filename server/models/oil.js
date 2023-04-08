@@ -3,93 +3,56 @@ const Schema = mongoose.Schema;
 
 const oilSchema = new Schema({
     type: Object,
-    properties: {
         name: {
             type: String,
-            required: true
+            // required: true
         },
         description: {
             type: String,       
         },
         image: {
             type: String,
-            required: true
+            // required: true
         },
         highlight: {
             type: Boolean,
-            required: true
+            // required: true
         },
-        themes: {
+        symptoms: {
             type: Array,
-            items: {
-                properties: {
-                    theme: {
-                        type: String,
-                        required: true
-                    },
-                    useAlone: { 
-                        type: String,
-                    },
-                    useWithOthers: {
+            symptom: {
+                type: Object,
+                name: {
+                    type: String,
+                    // required: true
+                },
+                theme: {
+                    type: String,
+                    // required: true
+                },
+                diffussions: {
+                    type: Array,
+                    diffussion: {
                         type: Object,
-                        properties: {
-                            description: {
-                                type: String,
-                            },
-                            needed: {
-                                type: Array,
-                                items: {
-                                    type: Number,
-                                }
-                            }
-                        }
-                    }   
-                }
-            },
-            "minItems": 1,
-            "maxItems": 4
-        },
-        categories: {
-            type: Array,
-            items: {
-                properties: {
-                    category: {
-                        type: String,
-                        required: true
-                    },
-                    useAlone: { 
-                        type: String,
-                    },
-                    useWithOthers: {
-                        type: Object,
-                        properties: {
-                            description: {
-                                type: String,
-                            },
-                            needed: {
-                                type: Array,
-                                items: {
-                                    type: Number,
-                                }
-                            }
-                        }
-                    }   
-                }
-            },
-            "minItems": 1,
-            "maxItems": 4
-        },
-        associations: {
-            type: Array,
-            items: {
-                properties: {
-                    association: {
-                        type: Number,
+                        name: {
+                            type: String,
+                            // required: true
+                        },
+                        descriptionAlone: {
+                            type: String,
+                        },
+                        descriptionWithOthers: {
+                            type: String,
+                        },
                     }
-                }
-            },
-            "minItems": 1,
+                },
+            }
         },
-    }
+        OilsAssociated: {
+            type: Array,
+            OilAssociated: {
+                type: Number,
+            }
+        },
 })
 module.exports = mongoose.model("Oil", oilSchema, "oils")

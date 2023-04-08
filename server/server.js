@@ -1,20 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path')
+// const path = require('path')
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 5001;
 const mongoose = require('mongoose');
 
+//middleware
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
 // Main path API //routes
 const oils = require('./api/oils');
 app.use('/api/oils', oils);
 
-//middleware
-app.use(bodyParser.json());
-app.use(cors());
 
 
 // Connect to MongoDB
