@@ -21,14 +21,21 @@ function FamousOils() {
         <div className="famous-oils">
             <h2 className="famous-oils__title">Les huiles du moment</h2>
             {oils && oils.map(oil => (
-                <div key={oil.id} className=''>
-                    <h2>{oil.name}</h2>
-                    {oil.themes.map(e => (
-                        <p>{e.theme}</p>
+                oil.highlight && (
+                <div key={oil._id}>
+                    <h2 key={oil.index}>{oil.name}</h2>
+                    {oil.symptoms.map(e => (
+                        <div key={e.name}>
+                            {e.diffusions && e.diffusions.map(d => (
+                                <p key={d.index}>{d.name}</p>
+                            ))}
+                            <p key={e.index}>{e.theme}</p>
+                        </div>
                     ))}
                 </div>
+                )
             ))}
-        </div>                     
+        </div>
     )
 }
 
