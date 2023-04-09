@@ -1,18 +1,32 @@
 import './App.scss';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Homepage from './components/homepage/Homepage';
 import OilsForm from './components/OilsForm';
+import Homepage from './components/pages/Homepage/Homepage';
+import Favorites from './components/pages/Favorites/Favorites';
+import BottomBar from './components/organisms/BottomBar/BottomBar';
+import Header from './components/organisms/Header/Header';
+import Diffusions from './components/pages/Diffusions/Diffusions';
+import AllOils from './components/pages/AllOils/AllOils';
+import Themes from './components/pages/Themes/Themes';
+import Symptoms from './components/pages/Symptoms/Symptoms';
+import Menu from './components/pages/Menu/Menu';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div className='Homepage'>
+          <Header />
+          <BottomBar />
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/admin' element={<OilsForm />} />
+            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/diffusions' element={<Diffusions />} />
+            <Route path='/allOils' element={<AllOils />} />
+            <Route path='/themes' element={<Themes />} />
+            <Route path='/symptoms' element={<Symptoms />} />
           </Routes>  
-        </div>
       </Router>
     </div>
   );

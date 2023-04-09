@@ -20,31 +20,25 @@ const oilSchema = new Schema({
         },
         symptoms: {
             type: Array,
-            symptom: {
-                type: Object,
+            name: {
+                type: String,
+                // required: true
+            },
+            theme: {
+                type: String,
+                // required: true
+            },
+            diffussions: {
+                type: Array,
                 name: {
                     type: String,
                     // required: true
                 },
-                theme: {
+                descriptionAlone: {
                     type: String,
-                    // required: true
                 },
-                diffussions: {
-                    type: Array,
-                    diffussion: {
-                        type: Object,
-                        name: {
-                            type: String,
-                            // required: true
-                        },
-                        descriptionAlone: {
-                            type: String,
-                        },
-                        descriptionWithOthers: {
-                            type: String,
-                        },
-                    }
+                descriptionWithOthers: {
+                    type: String,
                 },
             }
         },
