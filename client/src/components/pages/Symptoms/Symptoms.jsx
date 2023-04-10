@@ -1,22 +1,16 @@
-import { Link } from "react-router-dom";
+import "./Symptoms.scss";
+import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
 
-const symptomsList = ["Aérophargie", "Angine", "Aphte", "Ballonement", "Bronchite", "Constipation", "Courbature", "Diarrhée", "Douleur dentaire", "Engelure", "Grippe", "Hématome", "Hoquet", "Insomnie", "Jambes lourdes", "Mal de dos", "Mal des transports", "mal de tête", "Nausée", "Vomissement", "Poux", "Rhinopharyngite", "Rhumatisme", "Sciatique", "Stress", "Toux", "Verrue", "Virus", "Varice"];
+const symptomsList = ["Aérophargie", "Angine", "Aphte", "Ballonement", "Bronchite", "Constipation", "Courbature", "Diarrhée", "Douleur dentaire", "Engelure", "Grippe", "Hématome", "Hoquet", "Insomnie", "Jambes lourdes", "Mal de dos", "Mal des transports", "Mal de tête", "Nausée", "Vomissement", "Poux", "Rhinopharyngite", "Rhumatisme", "Sciatique", "Stress", "Toux", "Verrue", "Virus", "Varice"];
 
 function Symptoms() {
-    const listElement = symptomsList.map(symptom => {
-        return (
-            <Link to={`/symptoms/${symptom}`} className="symptom__container">
-                <li className="symptom__title">{symptom}</li>
-            </Link>
-        )})
-
     return (
-        <>
+        <div className="symptoms__wrapper">
             <h2>Symptoms</h2>
-            <ul className="symptoms__wrapper">
-                {listElement}
-            </ul>
-        </>
+            <div>
+                <AlphabeticalList words={symptomsList} link="symptoms"/>
+            </div>
+        </div>
     )
 }
 
