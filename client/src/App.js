@@ -12,6 +12,7 @@ import SymptomsList from './components/pages/Symptoms/SymptomsList';
 import Menu from './components/pages/Menu/Menu';
 import SymptomsResult from './components/pages/Symptoms/SymptomsResult';
 import ThemesResult from './components/pages/Themes/ThemesResult';
+import DiffusionsResult from './components/pages/Diffusions/DiffusionsResult';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/menu' element={<Menu />} />
             <Route path='/diffusions' element={<DiffusionsList />} />
+            <Route path='/diffusions/:name' element={<DiffusionsResult />} />
             <Route path='/allOils' element={<AllOils />} />
             <Route path='/themes' element={<ThemesList />} />
             <Route path='/themes/:theme' element={<ThemesResult />} />
