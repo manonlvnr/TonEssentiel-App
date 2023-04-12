@@ -5,7 +5,7 @@ import Homepage from './components/pages/Homepage/Homepage';
 import Favorites from './components/pages/Favorites/Favorites';
 import BottomBar from './components/organisms/BottomBar/BottomBar';
 import Header from './components/organisms/Header/Header';
-import Diffusions from './components/pages/Diffusions/Diffusions';
+import DiffusionsList from './components/pages/Diffusions/DiffusionsList';
 import AllOils from './components/pages/AllOils/AllOils';
 import ThemesList from './components/pages/Themes/ThemesList';
 import SymptomsList from './components/pages/Symptoms/SymptomsList';
@@ -24,7 +24,7 @@ function App() {
             <Route path='/admin' element={<OilsForm />} />
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/menu' element={<Menu />} />
-            <Route path='/diffusions' element={<Diffusions />} />
+            <Route path='/diffusions' element={<DiffusionsList />} />
             <Route path='/allOils' element={<AllOils />} />
             <Route path='/themes' element={<ThemesList />} />
             <Route path='/themes/:theme' element={<ThemesResult />} />
