@@ -66,6 +66,22 @@ const getOilByTheme = async (req, res) => {
     }
 }
 
+// GET oils By Diffusion
+const getOilByDiffusion = async (req, res) => {
+    const { name } = req.params;
+
+    try {
+        const oils = await Oil.find({ symptoms: { $elemMatch: { diffusions: { $elemMatch: { name: name } } } }});
+        if (oils) {
+            return res.status(200).json(oils);
+        }
+        res.status(404).json({ message: 'There is no oil for this type of diffusion...' });
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message, message: 'Error getting oil' });
+    }
+}
+
 // POST one oil
 const createOil = async (req, res) => {
     // const { name, description, image } = req.body;
@@ -106,6 +122,7 @@ module.exports = {
     getOneOilById,
     getOilBySymptom,
     getOilByTheme,
+    getOilByDiffusion,
     createOil,
     updateOil
 }
