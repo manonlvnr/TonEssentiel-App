@@ -50,6 +50,22 @@ const getOilBySymptom = async (req, res) => {
     }
 }
 
+// GET oils By Theme
+const getOilByTheme = async (req, res) => {
+    const { theme } = req.params;
+
+    try {
+        const oils = await Oil.find({ symptoms: { $elemMatch: { theme: theme } }});
+        if (oils) {
+            return res.status(200).json(oils);
+        }
+        res.status(404).json({ message: 'There is no oil for this theme...' });
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message, message: 'Error getting oil' });
+    }
+}
+
 // POST one oil
 const createOil = async (req, res) => {
     // const { name, description, image } = req.body;
@@ -89,6 +105,7 @@ module.exports = {
     getAllOils,
     getOneOilById,
     getOilBySymptom,
+    getOilByTheme,
     createOil,
     updateOil
 }
