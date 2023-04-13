@@ -13,6 +13,7 @@ import Menu from './components/pages/Menu/Menu';
 import SymptomsResult from './components/pages/Symptoms/SymptomsResult';
 import ThemesResult from './components/pages/Themes/ThemesResult';
 import DiffusionsResult from './components/pages/Diffusions/DiffusionsResult';
+import Oil from './components/pages/Oil/Oil';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/themes/:theme' element={<ThemesResult />} />
             <Route path='/symptoms' element={<SymptomsList />} />
             <Route path='/symptoms/:name' element={<SymptomsResult />} />
+            <Route path='/:oil' element={<Oil />} />
           </Routes>  
       </Router>
     </div>
