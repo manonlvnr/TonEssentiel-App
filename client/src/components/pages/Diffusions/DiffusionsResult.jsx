@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function DiffusionsResult() {
     const routeParams = useParams();
@@ -22,10 +22,10 @@ function DiffusionsResult() {
     return (
         <div>
             <h2>DiffusionsResult</h2>
-            {diffusions.map((diffusion) => (
-                <div key={diffusion.id}>
-                    <h3>{diffusion.name}</h3>
-                </div>
+            {diffusions.map((oil) => (
+                <Link to={`/${oil.name}`} key={oil.id}>
+                    <h3>{oil.name}</h3>
+                </Link>
             ))}
         </div>
     );

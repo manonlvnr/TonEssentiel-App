@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -22,10 +22,10 @@ function SymptomsResult() {
     return (
         <div>
         <h2>SymptomsResult</h2>
-        {symptoms.map((symptom) => (
-            <div key={symptom.id}>
-                <h3>{symptom.name}</h3>
-            </div>
+        {symptoms.map((oil) => (
+            <Link to={`/${oil.name}`} key={oil.id}>
+                <h3>{oil.name}</h3>
+            </Link>
         ))}
         </div>
     );
