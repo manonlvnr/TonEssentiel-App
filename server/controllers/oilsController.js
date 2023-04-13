@@ -14,8 +14,8 @@ const getAllOils = async (req, res) => {
 // res.send('Voici toutes les huiles!');
 // res.json({message: "Voici toutes les huiles!"})
 
-// GET one oil
-const getOneOil = async (req, res) => {
+// GET one oil by ID
+const getOneOilById = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -28,6 +28,22 @@ const getOneOil = async (req, res) => {
             return res.status(200).json(oil);
         }
         res.status(404).json({ message: 'Oil not found!' });
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message, message: 'Error getting oil' });
+    }
+}
+
+// GET oils By Symptom
+const getOilBySymptom = async (req, res) => {
+    const { name } = req.params;
+
+    try {
+        const oils = await Oil.find({ symptoms: { $elemMatch: { name: name } }});
+        if (oils) {
+            return res.status(200).json(oils);
+        }
+        res.status(404).json({ message: 'There is no oil for this symptom...' });
     }
     catch (error) {
         res.status(500).json({ error: error.message, message: 'Error getting oil' });
@@ -71,7 +87,8 @@ const updateOil = async (req, res) => {
 
 module.exports = {
     getAllOils,
-    getOneOil,
+    getOneOilById,
+    getOilBySymptom,
     createOil,
     updateOil
 }
