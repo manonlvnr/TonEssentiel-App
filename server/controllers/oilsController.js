@@ -14,20 +14,16 @@ const getAllOils = async (req, res) => {
 // res.send('Voici toutes les huiles!');
 // res.json({message: "Voici toutes les huiles!"})
 
-// GET one oil by ID
-const getOneOilById = async (req, res) => {
-    const { id } = req.params;
+// GET one oil by name
+const getOneOilByName = async (req, res) => {
+    const { oil } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send('No oil with that id');
-    }; // if id is not valid, return 404
-    
     try {
-        const oil = await Oil.findById(id);
-        if (oil) {
-            return res.status(200).json(oil);
+        const oils = await Oil.find({ name: oil });
+        if (oils) {
+            return res.status(200).json(oils);
         }
-        res.status(404).json({ message: 'Oil not found!' });
+        res.status(404).json({ message: 'There is no oil with this name...' });
     }
     catch (error) {
         res.status(500).json({ error: error.message, message: 'Error getting oil' });
@@ -119,7 +115,7 @@ const updateOil = async (req, res) => {
 
 module.exports = {
     getAllOils,
-    getOneOilById,
+    getOneOilByName,
     getOilBySymptom,
     getOilByTheme,
     getOilByDiffusion,

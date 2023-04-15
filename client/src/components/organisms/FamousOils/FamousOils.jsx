@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './FamousOils.scss'
+import { Link } from 'react-router-dom';
 
 function FamousOils() {
     const [oils, setOils] = useState(null);
@@ -22,7 +23,7 @@ function FamousOils() {
             <h2 className="famous-oils__title">Les huiles du moment</h2>
             {oils && oils.map(oil => (
                 oil.highlight && (
-                <div key={oil._id}>
+                <Link to={`/${oil.name}`} key={oil._id}>
                     <h2 key={oil.index}>{oil.name}</h2>
                     {oil.symptoms.map(e => (
                         <div key={e.name}>
@@ -32,7 +33,7 @@ function FamousOils() {
                             <p key={e.index}>{e.theme}</p>
                         </div>
                     ))}
-                </div>
+                </Link>
                 )
             ))}
         </div>

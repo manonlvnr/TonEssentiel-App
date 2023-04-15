@@ -1,15 +1,15 @@
 const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router()
-const { getAllOils, getOneOilById, getOilBySymptom, getOilByTheme, getOilByDiffusion, createOil, updateOil } = require('../controllers/oilsController');
+const { getAllOils, getOneOilByName, getOilBySymptom, getOilByTheme, getOilByDiffusion, createOil, updateOil } = require('../controllers/oilsController');
 
 // GET /api/oils
 // Récupérer tous les huiles
 router.get('/', getAllOils);
 
-// GET /api/oils/:id
-// Récupérer une huile par son id
-router.get('/:id', getOneOilById);
+// GET /api/oils/:name
+// Récupérer une huile par son name
+router.get('/:oil', getOneOilByName);
 
 // GET /api/oils/symptoms/:symptom
 // Récupérer les huiles selon un symptôme
