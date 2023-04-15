@@ -13,6 +13,7 @@ const signupUsers = async (req, res) => {
     }
     catch (err) {
         res.status(400).json({ message: err.message });
+        return
     }
 
     res.json({ message: 'Signup user' });
