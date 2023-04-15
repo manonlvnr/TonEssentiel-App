@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Main path API //routes
-const oils = require('./api/oils');
+const oils = require('./routes/oils');
 app.use('/api/oils', oils);
 
 
