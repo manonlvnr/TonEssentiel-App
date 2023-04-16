@@ -53,4 +53,22 @@ const userSchema = new Schema({
         return user.save()
     }
 
+    userSchema.statics.signin = async function( email, password ) {
+        if( !email || !password ) {
+            throw new Error('Please fill all fields')
+        }
+
+        const userExist = await this.findOne({ email })
+        if(!userExist) {
+            throw new Error('User does not exist or the email is incorrect')
+        }
+
+        const passwordMatch = await bcrypt.compare(password, userExist.password)
+        if(!passwordMatch) {
+            throw new Error('Password is incorrect')
+        }
+
+        return userExist
+    }
+
 module.exports = mongoose.model("User", userSchema, "users")
