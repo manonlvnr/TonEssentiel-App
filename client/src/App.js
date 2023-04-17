@@ -14,7 +14,7 @@ import SymptomsResult from './components/pages/Symptoms/SymptomsResult';
 import ThemesResult from './components/pages/Themes/ThemesResult';
 import DiffusionsResult from './components/pages/Diffusions/DiffusionsResult';
 import Oil from './components/pages/Oil/Oil';
-import Signin from './components/Signin/Signin';
+import Signin from './components/pages/Signin/Signin';
 import Signup from './components/pages/Signup/Signup';
 
 function App() {
