@@ -5,7 +5,7 @@ const validator = require('validator');
 
 const userSchema = new Schema({
     type: Object,
-        name: {
+        userName: {
             type: String,
             required: true
         },
@@ -21,9 +21,9 @@ const userSchema = new Schema({
     })
 
     // Static methods
-    userSchema.statics.signup = async function( name, email, password ) {
+    userSchema.statics.signup = async function( userName, email, password ) {
 
-        if(!name || !email || !password) {
+        if(!userName || !email || !password) {
             throw new Error('Please fill all fields')
         }
 
@@ -45,7 +45,7 @@ const userSchema = new Schema({
         const hash = await bcrypt.hash(password, salt)
 
         const user = await this.create({
-            name,
+            userName,
             email,
             password: hash
         })
