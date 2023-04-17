@@ -14,6 +14,8 @@ import SymptomsResult from './components/pages/Symptoms/SymptomsResult';
 import ThemesResult from './components/pages/Themes/ThemesResult';
 import DiffusionsResult from './components/pages/Diffusions/DiffusionsResult';
 import Oil from './components/pages/Oil/Oil';
+import Signin from './components/Signin/Signin';
+import Signup from './components/pages/Signup/Signup';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
             <Route path='/symptoms' element={<SymptomsList />} />
             <Route path='/symptoms/:name' element={<SymptomsResult />} />
             <Route path='/:oil' element={<Oil />} />
+            <Route path='/signin' element={<Signin />} />
+            <Route path='/signup' element={<Signup />} />
           </Routes>  
       </Router>
     </div>
