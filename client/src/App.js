@@ -39,8 +39,8 @@ function App() {
             <Route path='/symptoms' element={<SymptomsList />} />
             <Route path='/symptoms/:name' element={<SymptomsResult />} />
             <Route path='/:oil' element={<Oil />} />
-            <Route path='/signin' element={<Signin />} />
-            <Route path='/signup' element={<Signup />} />
+            <Route path='/signin' element={!user ? <Signin /> : <Navigate to="/"/>} />
+            <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
           </Routes>  
       </Router>
     </div>
