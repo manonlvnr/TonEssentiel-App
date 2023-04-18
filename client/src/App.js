@@ -1,5 +1,5 @@
 import './App.scss';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import OilsForm from './components/OilsForm';
 import Homepage from './components/pages/Homepage/Homepage';
 import Favorites from './components/pages/Favorites/Favorites';
@@ -14,8 +14,13 @@ import SymptomsResult from './components/pages/Symptoms/SymptomsResult';
 import ThemesResult from './components/pages/Themes/ThemesResult';
 import DiffusionsResult from './components/pages/Diffusions/DiffusionsResult';
 import Oil from './components/pages/Oil/Oil';
+import Signin from './components/pages/Signin/Signin';
+import Signup from './components/pages/Signup/Signup';
+import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
+  const { user } = useAuthContext();
+
   return (
     <div className="App">
       <Router>
@@ -24,7 +29,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/admin' element={<OilsForm />} />
-            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/favorites' element={user ? <Favorites /> : <Navigate to="/signin" />} />
             <Route path='/menu' element={<Menu />} />
             <Route path='/diffusions' element={<DiffusionsList />} />
             <Route path='/diffusions/:name' element={<DiffusionsResult />} />
@@ -34,6 +39,8 @@ function App() {
             <Route path='/symptoms' element={<SymptomsList />} />
             <Route path='/symptoms/:name' element={<SymptomsResult />} />
             <Route path='/:oil' element={<Oil />} />
+            <Route path='/signin' element={!user ? <Signin /> : <Navigate to="/"/>} />
+            <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
           </Routes>  
       </Router>
     </div>

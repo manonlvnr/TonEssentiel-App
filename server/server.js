@@ -12,10 +12,14 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
-// Main path API //routes
-const oils = require('./api/oils');
+// Main API's path
+// Oils routes
+const oils = require('./routes/oils');
 app.use('/api/oils', oils);
 
+// Users routes
+const users = require('./routes/users');
+app.use('/api/users', users);
 
 
 // Connect to MongoDB
