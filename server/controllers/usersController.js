@@ -42,13 +42,10 @@ const signupUsers = async (req, res) => {
     res.json({ message: 'Signup user' });
 };
 
-const getUserById = async (req, res) => {
-    const { id } = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send('No user with that id');
-    }
+const getUserByEmail = async (req, res) => {
+    const { email } = req.params;
     try {
-        const user = await User.findById(id);
+        const user = await User.find({ email: email });
         if(user) {
             return res.status(200).json(user);
         }
@@ -59,15 +56,27 @@ const getUserById = async (req, res) => {
     }
 }
 
-const updateFavorites = async (req, res) => {
-    const { id } = req.params;
+const addFavorites = async (req, res) => {
+    const { email } = req.params;
     const { favorites } = req.body;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send('No user with that id');
-    }
     try {
-        const updateUserFav = await User.findByIdAndUpdate(id, { $push: { favorites: favorites } }, { new: true });
+        const updateUserFav = await User.findOneAndUpdate({email: email}, { $push: { favorites: favorites } }, { new: true });
+        res.status(200).json(updateUserFav);
+        return
+    }
+    catch (err) {
+        res.status(400).json({ message: err.message });
+        return
+    }
+}
+
+const removeFavorites = async (req, res) => {
+    const { email } = req.params;
+    const { favorites } = req.body;
+
+    try {
+        const updateUserFav = await User.findOneAndUpdate({email: email}, { $pull: { favorites: favorites } }, { new: true });
         res.status(200).json(updateUserFav);
         return
     }
@@ -80,6 +89,7 @@ const updateFavorites = async (req, res) => {
 module.exports = {
     signinUsers,
     signupUsers,
-    getUserById,
-    updateFavorites
+    getUserByEmail,
+    addFavorites,
+    removeFavorites
 }
