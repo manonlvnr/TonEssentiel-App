@@ -23,7 +23,7 @@ function SymptomsResult() {
         <div>
         <h2>SymptomsResult</h2>
         {symptoms.map((oil) => (
-            <Link to={`/${oil.name}`} key={oil.id}>
+            <Link to={`/allOils/${oil.name}`} key={oil.id}>
                 <h3>{oil.name}</h3>
             </Link>
         ))}
