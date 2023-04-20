@@ -23,7 +23,7 @@ function DiffusionsResult() {
         <div>
             <h2>DiffusionsResult</h2>
             {diffusions.map((oil) => (
-                <Link to={`/${oil.name}`} key={oil.id}>
+                <Link to={`/allOils/${oil.name}`} key={oil.id}>
                     <h3>{oil.name}</h3>
                 </Link>
             ))}

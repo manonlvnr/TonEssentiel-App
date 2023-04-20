@@ -24,7 +24,7 @@ function ThemesResult() {
         <div>
             <h2>ThemesResult</h2>
             {themes.map((oil) => (
-                <Link to={`/${oil.name}`} key={oil.id}>
+                <Link to={`/allOils/${oil.name}`} key={oil.id}>
                     <h3>{oil.name}</h3>
                 </Link>
             ))}
