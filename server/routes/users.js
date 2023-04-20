@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { signinUsers, signupUsers, getUserById, updateFavorites } = require('../controllers/usersController');
+const { signinUsers, signupUsers, getUserByEmail, addFavorites, removeFavorites } = require('../controllers/usersController');
 
 // signin
 router.post('/signin', signinUsers);
@@ -9,10 +9,13 @@ router.post('/signin', signinUsers);
 router.post('/signup', signupUsers);
 
 // Get user by id
-router.get('/:id', getUserById);
+router.get('/:email', getUserByEmail);
 
 // Favorites
-// Mettre les à jour les fav de l'utilisateur
-router.post('/:id', updateFavorites)
+// Ajouter aux favs de l'utilisateur
+router.post('/:email', addFavorites)
+
+// Supprimer des favs de l'utilisateur
+router.delete('/:email', removeFavorites)
 
 module.exports = router
