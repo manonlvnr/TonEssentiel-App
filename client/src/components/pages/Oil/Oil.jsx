@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 function Oil() {
@@ -9,6 +9,8 @@ function Oil() {
     const [userState, setUserState] = useState([]);
 
     const { user } = useAuthContext();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchOil = async () => {
@@ -85,6 +87,8 @@ function Oil() {
                 addFavorites();
 
             }
+        } else {
+            navigate('/signin');
         }
     }
 
