@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700');
 
 :root {
 // colors
@@ -7,6 +8,7 @@
     --bg-white: #FFFFFF;
     --primary-color-light: #1D6D1D;
     --primary-color-dark: #6FA56F;
+    --secondary-color: #FF7F74;
 
 // fonts-size
     --text-xs: 0.8rem;
@@ -14,7 +16,6 @@
     --text-md: 1.3rem;
     --text-lg: 2rem;
     --text-xl: 2.5rem;
-    --text-2xl: 3.1rem;
 }
 
 body {
