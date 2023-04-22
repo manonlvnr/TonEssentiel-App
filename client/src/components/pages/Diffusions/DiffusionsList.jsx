@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import Title from '../../atoms/Title';
 
 const Diffusions = ["voie orale", "diffusion", "massage", "bain", "cosmétique", "inhalation"]
 
 function DiffusionsList() {
     return (
         <div className="diffusions__wrapper">
-            <h2>Diffusions</h2>
+            <Title children={"Diffusions"} />
             <div>
                 <lu>
                     {Diffusions.map((diffusion) => (

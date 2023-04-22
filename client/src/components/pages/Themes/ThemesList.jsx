@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import Title from '../../atoms/Title';
+
 
 const Themes = ["beauté", "bien-ëtre", "cuisine", "maison", "parfum", "santé"]
 
 function ThemesList() {
     return (
         <div className="symptoms__wrapper">
-            <h2>Themes</h2>
+            <Title children={"Thèmes"} />
             <div>
                 <lu>
                     {Themes.map((theme) => (
