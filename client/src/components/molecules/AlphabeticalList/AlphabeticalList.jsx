@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './AlphabeticalList.scss'
+import {IconChevronRight} from '@tabler/icons-react';
 
 function AlphabeticalList({ words, link }) {
     const wordListRef = useRef(null);
@@ -27,7 +28,12 @@ function AlphabeticalList({ words, link }) {
         <div className='list'>
             <ul ref={wordListRef} className='list__words'>
                 {words.map(word => (
-                    <li className='list__word'><Link key={word} to={`/${link}/${word}`}>{word}</Link></li>
+                    <li className='list__word'>
+                        <Link key={word} to={`/${link}/${word}`} className='list__word__link'>
+                            {word}
+                            <IconChevronRight/>
+                        </Link>
+                    </li>
                 ))}
             </ul>
             <div className="list__letters">

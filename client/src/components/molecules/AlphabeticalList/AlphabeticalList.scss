@@ -9,7 +9,6 @@
     padding-inline: var(--space-md);
 }
 
-//
 // Letters list
 // -----------------------------------------------------------------------------
 
@@ -32,7 +31,6 @@
     cursor: pointer;
 }
 
-//
 // Words List
 // -----------------------------------------------------------------------------
 
@@ -56,4 +54,10 @@
         color: inherit;
         text-decoration: none;
     }
+}
+
+.list__word__link {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
 }
