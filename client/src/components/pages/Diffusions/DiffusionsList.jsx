@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Title from '../../atoms/Title';
+import Title from '../../atoms/Title/Title';
 
 const Diffusions = ["voie orale", "diffusion", "massage", "bain", "cosmétique", "inhalation"]
 
