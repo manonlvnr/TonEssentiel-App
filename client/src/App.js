@@ -25,7 +25,6 @@ function App() {
     <div className="App">
       <Router>
           <Header />
-          <BottomBar />
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/admin' element={<OilsForm />} />
@@ -42,6 +41,7 @@ function App() {
             <Route path='/signin' element={!user ? <Signin /> : <Navigate to="/"/>} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
           </Routes>  
+          <BottomBar />
       </Router>
     </div>
   );

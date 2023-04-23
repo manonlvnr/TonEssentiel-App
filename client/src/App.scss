@@ -5,17 +5,23 @@
 // colors
     --bg-color-light: #F4F4F4;
     --bg-color-dark: #0E110E;
-    --bg-white: #FFFFFF;
-    --primary-color-light: #1D6D1D;
-    --primary-color-dark: #6FA56F;
-    --secondary-color: #FF7F74;
+    --color-white: #FFFFFF;
+    --color-primary-light: #1D6D1D;
+    --color-primary-dark: #6FA56F;
+    --color-secondary: #FF7F74;
 
 // fonts-size
-    --text-xs: 0.8rem;
+    --text-xs: .8rem;
     --text-sm: 1rem;
     --text-md: 1.3rem;
     --text-lg: 2rem;
     --text-xl: 2.5rem;
+
+// fonts-size
+    --space-xs: .25rem;
+    --space-sm: .5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
 }
 
 body {

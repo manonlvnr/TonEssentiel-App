@@ -1,7 +1,7 @@
 import './AllOils.scss';
 import { useEffect, useState } from "react";
 import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
-import Title from '../../atoms/Title';
+import Title from '../../atoms/Title/Title';
 
 function AllOils() {
     const [oils, setOils] = useState(null);
