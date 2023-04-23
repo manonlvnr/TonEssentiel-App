@@ -1,0 +1,48 @@
+//
+// list
+// -----------------------------------------------------------------------------
+
+.list {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-inline: var(--space-md);
+}
+
+//
+// Letters list
+// -----------------------------------------------------------------------------
+
+.list__letters {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-left: var(--primary-color-light) 2px solid;
+}
+
+.list__letter {
+    display: block;
+    color: var(--primary-color-light);
+    text-transform: uppercase;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+//
+// Words List
+// -----------------------------------------------------------------------------
+
+.list__words {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.list__word {
+    display: block;
+    list-style: none;
+}

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import './AlphabeticalList.scss'
 
 function AlphabeticalList({ words, link }) {
     const wordListRef = useRef(null);
@@ -23,17 +24,19 @@ function AlphabeticalList({ words, link }) {
     };
 
     return (
-        <div>
-            {letters.map(letter => (
-                <button key={letter} onClick={() => scrollToLetter(letter)}>
-                    {letter}
-                </button>
-            ))}
-            <ul ref={wordListRef}>
+        <div className='list'>
+            <ul ref={wordListRef} className='list__words'>
                 {words.map(word => (
-                    <li><Link key={word} to={`/${link}/${word}`}>{word}</Link></li>
+                    <li className='list__word'><Link key={word} to={`/${link}/${word}`}>{word}</Link></li>
                 ))}
             </ul>
+            <div className="list__letters">
+                {letters.map(letter => (
+                    <button key={letter} onClick={() => scrollToLetter(letter)} className="list__letter">
+                        {letter}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }
