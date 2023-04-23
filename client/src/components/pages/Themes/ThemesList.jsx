@@ -1,22 +1,13 @@
-import { Link } from "react-router-dom";
 import Title from '../../atoms/Title/Title';
+import Categories from '../../molecules/Categories/Categories';
 
-
-const Themes = ["beauté", "bien-ëtre", "cuisine", "maison", "parfum", "santé"]
+const themesCategories = [{name: "Beauté", path: "/themes/beaute"}, {name: "Bien-être", path: "/themes/bien-etre"}, {name: "Cuisine", path: "/themes/cuisine"}, {name: "Maison", path: "/themes/maison"}, {name: "Parfum", path: "/themes/parfum"}, {name: "Santé", path: "/themes/sante"}]
 
 function ThemesList() {
     return (
-        <div className="symptoms__wrapper">
+        <div className="symptoms">
             <Title children={"Thèmes"} />
-            <div>
-                <lu>
-                    {Themes.map((theme) => (
-                        <li key={theme.id}>
-                            <Link to={`/themes/${theme}`}>{theme}</Link>
-                        </li>
-                    ))}
-                </lu>
-            </div>
+            <Categories categories={themesCategories} />
         </div>
     )
 }
