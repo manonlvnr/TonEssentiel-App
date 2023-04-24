@@ -51,7 +51,7 @@ function Oil() {
         const oilId = await oil.map((oil) => oil._id);
         console.log("oil-id", oilId);
 
-        const favoritesArray = await userState[0].favorites;
+        const favoritesArray = await userState[0].favorites.map(favorite => favorite._id);
         console.log("favorites", favoritesArray);
 
         if (favoritesArray.includes(oilId[0])) {
@@ -107,7 +107,7 @@ function Oil() {
                 </div>
             ))}
             <button type="button" onClick={handleFavorites}>
-                {userState[0]?.favorites?.includes(oil[0]?._id) ? <p>remove</p> : <p>add</p>}
+                {userState[0]?.favorites?.some(e => e._id === oil[0]._id) ? <p>remove</p> : <p>add</p>}
             </button>
         </div>
     );
