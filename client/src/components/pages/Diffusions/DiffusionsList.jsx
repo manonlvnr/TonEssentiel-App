@@ -1,20 +1,13 @@
-import { Link } from "react-router-dom";
+import Title from '../../atoms/Title/Title';
+import Categories from "../../molecules/Categories/Categories";
 
-const Diffusions = ["voie orale", "diffusion", "massage", "bain", "cosmétique", "inhalation"]
+const diffusionsCategories = [{name: "Voie orale", path: "/diffusions/voie-orale"}, {name: "Diffusion", path: "/diffusions/diffusion"}, {name: "Massage", path: "/diffusions/massage"}, {name: "Bain", path: "/diffusions/bain"}, {name: "Cosmétique", path: "/diffusions/cosmetique"}, {name: "Inhalation", path: "/diffusions/inhalation"}]
 
 function DiffusionsList() {
     return (
-        <div className="diffusions__wrapper">
-            <h2>Diffusions</h2>
-            <div>
-                <lu>
-                    {Diffusions.map((diffusion) => (
-                        <li key={diffusion.id}>
-                            <Link to={`/diffusions/${diffusion}`}>{diffusion}</Link>
-                        </li>
-                    ))}
-                </lu>
-            </div>
+        <div className="diffusions">
+            <Title children={"Diffusions"} />
+            <Categories categories={diffusionsCategories} />
         </div>
     )
 }

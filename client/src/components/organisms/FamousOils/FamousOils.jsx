@@ -23,14 +23,14 @@ function FamousOils() {
             <h2 className="famous-oils__title">Les huiles du moment</h2>
             {oils && oils.map(oil => (
                 oil.highlight && (
-                <Link to={`/${oil.name}`} key={oil._id}>
-                    <h2 key={oil.index}>{oil.name}</h2>
+                <Link to={`/allOils/${oil.name}`} key={oil._id}>
+                    <h2>{oil.name}</h2>
                     {oil.symptoms.map(e => (
                         <div key={e.name}>
                             {e.diffusions && e.diffusions.map(d => (
                                 <p key={d.index}>{d.name}</p>
                             ))}
-                            <p key={e.index}>{e.theme}</p>
+                            <p>{e.theme}</p>
                         </div>
                     ))}
                 </Link>

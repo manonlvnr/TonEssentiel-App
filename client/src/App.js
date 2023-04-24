@@ -25,7 +25,6 @@ function App() {
     <div className="App">
       <Router>
           <Header />
-          <BottomBar />
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/admin' element={<OilsForm />} />
@@ -38,10 +37,11 @@ function App() {
             <Route path='/themes/:theme' element={<ThemesResult />} />
             <Route path='/symptoms' element={<SymptomsList />} />
             <Route path='/symptoms/:name' element={<SymptomsResult />} />
-            <Route path='/:oil' element={<Oil />} />
+            <Route path='/allOils/:oil' element={<Oil />} />
             <Route path='/signin' element={!user ? <Signin /> : <Navigate to="/"/>} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
           </Routes>  
+          <BottomBar />
       </Router>
     </div>
   );
