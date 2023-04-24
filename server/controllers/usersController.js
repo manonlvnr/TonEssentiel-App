@@ -61,7 +61,7 @@ const addFavorites = async (req, res) => {
     const { favorites } = req.body;
 
     try {
-        const updateUserFav = await User.findOneAndUpdate({email: email}, { $push: { favorites: favorites } }, { new: true });
+        const updateUserFav = await User.findOneAndUpdate({email: email}, { $push: { favorites: favorites } }, { new: true }).populate('favorites');
         res.status(200).json(updateUserFav);
         return
     }
@@ -76,7 +76,7 @@ const removeFavorites = async (req, res) => {
     const { favorites } = req.body;
 
     try {
-        const updateUserFav = await User.findOneAndUpdate({email: email}, { $pull: { favorites: favorites } }, { new: true });
+        const updateUserFav = await User.findOneAndUpdate({email: email}, { $pull: { favorites: favorites } }, { new: true }).populate('favorites');
         res.status(200).json(updateUserFav);
         return
     }
