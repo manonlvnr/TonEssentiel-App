@@ -16,81 +16,86 @@ function Oil() {
         const fetchOil = async () => {
             const response = await fetch(`/api/oils/${routeParams.oil}`);
             const json = await response.json();
-            
+
             if (response.ok) {
                 setOil(json);
                 // console.log(json);
             }
         };
 
-        fetchOil();
+        const fetchUser = async () => {
+            if (user) {
+                const localInfo = localStorage.getItem("user");
+                const email = JSON.parse(localInfo).email;
+                // console.log(email);
 
-    }, [ routeParams.oil ]);
+                const response = await fetch(`/api/users/${email}`);
+                const json = await response.json();
+
+                if (response.ok) {
+                    setUserState(json);
+                    // console.log("userState", json);
+                }
+            } else {
+                navigate("/signin");
+            }
+        };
+
+        fetchOil();
+        fetchUser();
+    }, [routeParams.oil, user, navigate]);
 
     const handleFavorites = async (e) => {
         e.preventDefault();
 
-        if(user) {
-            const localInfo = localStorage.getItem('user');
-            const email = JSON.parse(localInfo).email;
-            console.log(email);
+        const oilId = await oil.map((oil) => oil._id);
+        console.log("oil-id", oilId);
 
-            const fetchUser = async () => {
-                const response = await fetch(`/api/users/${email}`);
-                const json = await response.json();
-                
-                if (response.ok) {
-                    setUserState(json);
-                    console.log("userState", json);
-                }
-            }
-            await fetchUser();
+        const favoritesArray = await userState[0].favorites;
+        console.log("favorites", favoritesArray);
 
-            const oilId = await oil.map((oil) => (oil._id))
-            console.log("oil-id" , oilId);
+        if (favoritesArray.includes(oilId[0])) {
+            console.log("oui");
 
-            const favoritesArray = await userState[0].favorites
-            console.log("favorites", favoritesArray);
-
-            if(favoritesArray.includes(oilId[0])) {
-                console.log('oui');
-
-                const removeFavorites = async () => {
-                    const response = await fetch(`/api/users/${email}`, {
+            const removeFavorites = async () => {
+                const response = await fetch(
+                    `/api/users/${userState[0].email}`,
+                    {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({favorites: oilId}),
-                    });
-                    const json = await response.json();
-                    console.log(json);
-                }
+                        body: JSON.stringify({ favorites: oilId[0] }),
+                    }
+                );
+                const json = await response.json();
+                console.log(json);
+                setUserState([json]);
+            };
 
-                removeFavorites();
+            removeFavorites();
+        } else {
+            console.log("non");
 
-            }  else {
-                console.log('non');
-
-                const addFavorites = async () => {
-                    const response = await fetch(`/api/users/${email}`, {
+            const addFavorites = async () => {
+                const response = await fetch(
+                    `/api/users/${userState[0].email}`,
+                    {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({favorites: oilId}),
-                    });
-                    const json = await response.json();
-                    console.log(json);
-                }
+                        body: JSON.stringify({ favorites: oilId[0] }),
+                    }
+                );
+                const json = await response.json();
+                console.log(json);
+                setUserState([json]);
+            };
 
-                addFavorites();
-
-            }
-        } else {
-            navigate('/signin');
+            addFavorites();
         }
-    }
+    };
 
     return (
         <div>
@@ -101,7 +106,9 @@ function Oil() {
                     <p>{oil.description}</p>
                 </div>
             ))}
-            <button type="button" onClick={handleFavorites}>favoris</button>
+            <button type="button" onClick={handleFavorites}>
+                {userState[0]?.favorites?.includes(oil[0]?._id) ? <p>remove</p> : <p>add</p>}
+            </button>
         </div>
     );
 }
