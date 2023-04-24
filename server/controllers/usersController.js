@@ -45,7 +45,7 @@ const signupUsers = async (req, res) => {
 const getUserByEmail = async (req, res) => {
     const { email } = req.params;
     try {
-        const user = await User.find({ email: email });
+        const user = await User.find({ email: email }).populate('favorites');
         if(user) {
             return res.status(200).json(user);
         }
