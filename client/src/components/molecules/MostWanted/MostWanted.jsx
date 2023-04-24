@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import "./MostWanted.scss";
 
-const mostWantedSymptoms = ["Mal de tête", "Boutons", "Lorem ispum", "Lorem ipsum", "Lorem ipsum", "Lorem ipsum"];
+const mostWantedSymptoms = ["Mal de tête", "Boutons", "Lorem ispu", "Lorm ipsum", "Lrem ipsum", "Lorem ipum"];
 
 
 function MostWanted() {
     const mostWantedElements = mostWantedSymptoms.map(symptom => {
         return (                
-                <SwiperSlide>
+                <SwiperSlide key={symptom}>
                         <Link className="mostWanted__description">{symptom}</Link>
                 </SwiperSlide>
         )
