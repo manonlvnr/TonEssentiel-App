@@ -15,7 +15,8 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
-        user: {email:"", token:""},
+        // user: {email:"", token:""},
+        user: null,
         isLoading: true,
         error: false,
     });
@@ -31,7 +32,8 @@ export const AuthContextProvider = ({ children }) => {
     
     return (
         <AuthContext.Provider value={{ ...authState, dispatch }}>
-            {authState.user && !authState.isLoading ? children : <div>loading...</div>}
+            {/* {authState.user && !authState.isLoading ? children : <div>loading...</div>} */}
+            {children}
         </AuthContext.Provider>
     );
 }
