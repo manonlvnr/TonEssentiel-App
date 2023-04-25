@@ -77,4 +77,35 @@ const userSchema = new Schema({
         return userExist
     }
 
+    // userSchema.statics.updateUser = async function( userName, email, password ) {
+    //     if ( !email || !userName) {
+    //         throw new Error('Email and username are required')
+    //     }
+
+    //     const emailExist = await this.findOne({ email })
+    //     if ( !validator.isEmail(email)) {
+    //         throw new Error('Please enter a valid email')
+    //     }
+
+    //     if ( !password ) { 
+    //         const actualPassword = this.findOne({ password })
+    //         password = actualPassword
+    //     } else {
+    //         const passwordUsed = await bcrypt.compare(password, emailExist.password)
+    //         if(!passwordUsed) {
+    //             throw new Error('Please not enter the same password as before')
+    //         } else if ( !validator.isStrongPassword(password)) {
+    //             throw new Error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character')
+    //         }
+    //     }
+
+
+    //     const salt = await bcrypt.genSalt(10)
+    //     const hash = await bcrypt.hash(password, salt)
+
+    //     const newUserInfos = await this.update({email : email}, {userName : userName}, {password : password})
+
+    //     return newUserInfos.save()
+    // }
+
 module.exports = mongoose.model("User", userSchema, "users")
