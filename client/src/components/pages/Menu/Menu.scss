@@ -1,4 +1,53 @@
-.menu__wrapper {
+@import '../../../Reset.scss';
 
+//
+// Menu
+// -----------------------------------------------------------------------------
+.menu {
+    margin-top: var(--space-xl);
+    padding:var(--space-md) var(--space-2xl) var(--space-2xl) var(--space-md);
 }
 
+// Catégories part
+// -----------------------------------------------------------------------------
+.menu__categories {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-sm);
+}
+
+.menu__categories__link {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-white);
+    background-color: var(--color-primary-light);
+    border-radius: 4px;
+
+    a {
+        @include reset-link;
+    }
+}
+
+// Account part
+// -----------------------------------------------------------------------------
+
+.menu__account__btn {
+    @include reset-button;
+
+    a {
+        @include reset-link;
+    }
+}
+
+// Infos part
+// -----------------------------------------------------------------------------
+
+.menu__infos__link {
+    a {
+        @include reset-link;
+    }
+}
