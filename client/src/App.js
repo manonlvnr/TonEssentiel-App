@@ -49,7 +49,7 @@ function App() {
             <Route path='/utilisations' element={<Uses />} />
             <Route path='/sources' element={<Sources />} />
             <Route path='/parametres' element={<Settings />} />
-            <Route path='/account' element={<Account />} />
+            <Route path='/account' element={user ? <Account /> : <Navigate to="/signin" />} />
           </Routes>  
           <BottomBar />
       </Router>
