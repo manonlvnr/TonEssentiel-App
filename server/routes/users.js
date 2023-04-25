@@ -8,14 +8,14 @@ router.post('/signin', signinUsers);
 // Signup
 router.post('/signup', signupUsers);
 
-// Get user by id
+// Get user by email
 router.get('/:email', getUserByEmail);
 
 // Favorites
 // Ajouter aux favs de l'utilisateur
-router.post('/:email', addFavorites)
+router.post('favorites/:email', addFavorites)
 
 // Supprimer des favs de l'utilisateur
-router.delete('/:email', removeFavorites)
+router.delete('favorites/:email', removeFavorites)
 
 module.exports = router
