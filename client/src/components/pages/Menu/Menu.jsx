@@ -1,37 +1,65 @@
 import { Link } from "react-router-dom";
 import './Menu.scss';
-import { useSignout } from "../../../hooks/useSignout";
 import { useAuthContext } from "../../../hooks/useAuthContext";
+import Search from "../../molecules/Search/Search";
+import { IconChevronRight, IconHelpOctagon, IconAlertOctagon, IconUser, IconBook2, IconSettings } from "@tabler/icons-react";
 
 function Menu() {
-    const signout = useSignout()
     const { user } = useAuthContext()
 
-    const handleclick = () => {
-        signout()
-    }
-
     return (
-        <div className="menu__wrapper">
-            <div className="menu__title">Menu</div>
-            <ul className="menu__links">
-                <li className="menu__link"><Link to="/allOils">Toutes les huiles</Link></li>
-                <li className="menu__link"><Link to="/symptoms">Symptômes</Link></li>
-                <li className="menu__link"><Link to="/diffusions">Diffusons</Link></li>
-                <li className="menu__link"><Link to="/themes">Thèmes</Link></li>
-            </ul>
-            {
-                user ?
-                <div>
-                    <div>{user.email}</div>
-                    <button onClick={handleclick}>Déconnexion</button>
+        <div className="menu">
+            <Search />
+            <div className="menu__categories">
+                <div className="menu__categories__link">
+                    <Link to="/allOils">Toutes les huiles</Link>
+                    <IconChevronRight />
                 </div>
-                :
-                <div>
-                    <Link to="/signup">Créer un compte</Link>
-                    <Link to="/signin">Se connecter</Link>
+                <div className="menu__categories__link">
+                    <Link to="/symptoms">Symptômes</Link>
+                    <IconChevronRight />
                 </div>
-            }
+                <div className="menu__categories__link">
+                    <Link to="/diffusions">Diffusons</Link>
+                    <IconChevronRight />
+                </div>
+                <div className="menu__categories__link">
+                    <Link to="/themes">Thèmes</Link>
+                    <IconChevronRight />
+                </div>
+            </div>
+            <div className="menu__account">
+                {
+                    user ?
+                    <button className="menu__account__btn">
+                        <IconUser />
+                        <Link to="/account">Mon compte</Link>
+                    </button>
+                    :
+                    <button className="menu__account__btn">
+                        <IconUser />
+                        <Link to="/signin">Mon compte</Link>
+                    </button>
+                }
+            </div>
+            <div className="menu__infos">
+                <div className="menu__infos__link">
+                    <IconHelpOctagon />
+                    <Link to="/faq">FAQ</Link>
+                </div>
+                <div className="menu__infos__link">
+                    <IconAlertOctagon />
+                    <Link to="/utilisations">Précautions d'utilisation</Link>
+                </div>
+                <div className="menu__infos__link">
+                    <IconBook2 />
+                    <Link to="/sources">Sources</Link>
+                </div>
+                <div className="menu__infos__link">
+                    <IconSettings />
+                    <Link to="/parametres">Paramêtres</Link>
+                </div>
+            </div>
         </div>
     )
 }
