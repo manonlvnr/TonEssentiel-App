@@ -17,6 +17,11 @@ import Oil from './components/pages/Oil/Oil';
 import Signin from './components/pages/Signin/Signin';
 import Signup from './components/pages/Signup/Signup';
 import { useAuthContext } from './hooks/useAuthContext';
+import Faq from './components/pages/Faq/Faq';
+import Uses from './components/pages/Uses/Uses';
+import Sources from './components/pages/Sources/Sources';
+import Settings from './components/pages/Settings/Settings';
+import Account from './components/pages/Account/Account';
 
 function App() {
   const { user } = useAuthContext();
@@ -40,6 +45,11 @@ function App() {
             <Route path='/allOils/:oil' element={<Oil />} />
             <Route path='/signin' element={!user ? <Signin /> : <Navigate to="/"/>} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
+            <Route path='/faq' element={<Faq />} />
+            <Route path='/utilisations' element={<Uses />} />
+            <Route path='/sources' element={<Sources />} />
+            <Route path='/parametres' element={<Settings />} />
+            <Route path='/account' element={<Account />} />
           </Routes>  
           <BottomBar />
       </Router>
