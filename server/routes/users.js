@@ -16,9 +16,9 @@ router.put('/profile/:email', updateProfile)
 
 // Favorites
 // Ajouter aux favs de l'utilisateur
-router.post('favorites/:email', addFavorites)
+router.post('/favorites/:email', addFavorites)
 
 // Supprimer des favs de l'utilisateur
-router.delete('favorites/:email', removeFavorites)
+router.delete('/favorites/:email', removeFavorites)
 
 module.exports = router
