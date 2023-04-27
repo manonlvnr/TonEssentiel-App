@@ -20,10 +20,11 @@ const getOneOilByName = async (req, res) => {
 
     try {
         const oils = await Oil.find({ name: oil });
-        if (oils) {
+        if (oils.length > 0) { 
             return res.status(200).json(oils);
         }
         res.status(404).json({ message: 'There is no oil with this name...' });
+
     }
     catch (error) {
         res.status(500).json({ error: error.message, message: 'Error getting oil' });
@@ -113,6 +114,28 @@ const updateOil = async (req, res) => {
     res.json(updatedOil);
 }
 
+const searchOilByKeyword = async (req, res) => {
+    try {
+
+        const searchKeyword = req.query.keyword
+
+        const oils = await Oil.find({
+            $or: [
+                { name: { $regex: searchKeyword, $options: "i" } },
+                { description: { $regex: searchKeyword, $options: "i" } },
+            ],
+        });
+
+        if (oils.length > 0) {
+            res.status(200).json(oils);
+        } else {
+            res.status(404).json({ message: "No oil found" });
+        }
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+}
+
 module.exports = {
     getAllOils,
     getOneOilByName,
@@ -120,5 +143,6 @@ module.exports = {
     getOilByTheme,
     getOilByDiffusion,
     createOil,
-    updateOil
+    updateOil,
+    searchOilByKeyword,
 }

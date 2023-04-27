@@ -14,7 +14,7 @@ function Oil() {
 
     useEffect(() => {
         const fetchOil = async () => {
-            const response = await fetch(`/api/oils/${routeParams.oil}`);
+            const response = await fetch(`/api/oils/names/${routeParams.oil}`);
             const json = await response.json();
 
             if (response.ok) {
