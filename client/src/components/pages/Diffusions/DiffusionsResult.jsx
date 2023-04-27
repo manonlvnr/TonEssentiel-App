@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import OilSummary from '../../molecules/OilSummary/OilSummary';
 
 function DiffusionsResult() {
     const routeParams = useParams();
@@ -24,7 +25,7 @@ function DiffusionsResult() {
             <h2>DiffusionsResult</h2>
             {diffusions.map((oil) => (
                 <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                    <h3>{oil.name}</h3>
+                    <OilSummary oilInfo={oil}/>
                 </Link>
             ))}
         </div>

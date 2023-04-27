@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Title from '../../atoms/Title/Title'
+import OilSummary from '../../molecules/OilSummary/OilSummary';
 
 function Favorites() {
     const [userState, setUserState] = useState([]);
@@ -28,10 +29,7 @@ function Favorites() {
                 {userState.map((user) => (
                     user.favorites.map((favorite) => (
                         <div className="favorites__container__card">
-                            <div>
-                                <h3>{favorite.name}</h3>
-                                <p>{favorite.description}</p>
-                            </div>
+                            <OilSummary oilInfo={favorite}/>
                         </div>
                     ))
                 ))}
