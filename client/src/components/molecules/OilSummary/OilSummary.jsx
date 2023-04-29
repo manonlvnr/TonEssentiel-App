@@ -17,11 +17,6 @@ function OilSummary (oilInfo) {
             <div className='card__body'>
                 <h2 className='card__body__name'>{oilInfo.oilInfo.name}</h2>
                 <div className='card__body__categories'>
-                    <ul className='categories__themes'>
-                        {themes.map(theme => (
-                            <li key={theme} className='categories__theme'>{theme}</li>
-                        ))}
-                    </ul>
                     <ul className='categories__diffusions'>
                         {diffusionsNames.map(diffusionName => (
                             <li key={diffusionName} className='categories__diffusion'>
@@ -44,6 +39,11 @@ function OilSummary (oilInfo) {
                                     }
                                 })()}
                             </li>
+                        ))}
+                    </ul>
+                    <ul className='categories__themes'>
+                        {themes.map(theme => (
+                            <li key={theme} className='categories__theme'>{theme}</li>
                         ))}
                     </ul>
                 </div>
