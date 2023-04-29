@@ -1,4 +1,11 @@
 import './OilSummary.scss';
+import bain from '../../../icons/bain.png';
+import diffusion from '../../../icons/diffusion.png';
+import massage from '../../../icons/massage.png';
+import oral from '../../../icons/voie-orale.png';
+import cosmetique from '../../../icons/cosmétique.png';
+import inhalation from '../../../icons/inhalation.png';
+
 
 function OilSummary (oilInfo) {
     const themes = Array.from(new Set(oilInfo.oilInfo.symptoms.map(e => e.theme)));
@@ -17,7 +24,26 @@ function OilSummary (oilInfo) {
                     </ul>
                     <ul className='categories__diffusions'>
                         {diffusionsNames.map(diffusionName => (
-                            <li key={diffusionName} className='categories__diffusion'>{diffusionName}</li>
+                            <li key={diffusionName} className='categories__diffusion'>
+                                {(() => {
+                                    switch (diffusionName) {
+                                    case 'bain':
+                                        return <img src={bain} alt="bain" />;
+                                    case 'diffusion':
+                                        return <img src={diffusion} alt="diffusion" />;
+                                    case 'massage':
+                                        return <img src={massage} alt="massage" />;
+                                    case 'voie orale':
+                                        return <img src={oral} alt="voie orale" />;
+                                    case 'cosmétique':
+                                        return <img src={cosmetique} alt="cosmétique" />;
+                                    case 'inhalation':
+                                        return <img src={inhalation} alt="inhalation" />;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
+                            </li>
                         ))}
                     </ul>
                 </div>
