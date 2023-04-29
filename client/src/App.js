@@ -22,6 +22,7 @@ import Uses from './components/pages/Uses/Uses';
 import Sources from './components/pages/Sources/Sources';
 import Settings from './components/pages/Settings/Settings';
 import Account from './components/pages/Account/Account';
+import SearchResult from './components/pages/SearchResult/SearchResult';
 
 function App() {
   const { user } = useAuthContext();
@@ -50,6 +51,7 @@ function App() {
             <Route path='/sources' element={<Sources />} />
             <Route path='/parametres' element={<Settings />} />
             <Route path='/account' element={user ? <Account /> : <Navigate to="/signin" />} />
+            <Route path='/search' element={ <SearchResult />} />
           </Routes>  
           <BottomBar />
       </Router>
