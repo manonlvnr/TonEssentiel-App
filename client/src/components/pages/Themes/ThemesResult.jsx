@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import OilSummary from '../../molecules/OilSummary/OilSummary';
 
 function ThemesResult() {
     const routeParams = useParams();
@@ -25,7 +26,7 @@ function ThemesResult() {
             <h2>ThemesResult</h2>
             {themes.map((oil) => (
                 <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                    <h3>{oil.name}</h3>
+                    <OilSummary oilInfo={oil}/>
                 </Link>
             ))}
         </div>

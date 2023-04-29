@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import './SymptomsResult.scss'
+import OilSummary from '../../molecules/OilSummary/OilSummary';
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -25,7 +26,7 @@ function SymptomsResult() {
             <h2>SymptomsResult</h2>
             {symptoms.map((oil) => (
                 <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                    <h3>{oil.name}</h3>
+                    <OilSummary oilInfo={oil}/>
                 </Link>
             ))}
         </div>

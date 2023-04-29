@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './FamousOils.scss'
 import { Link } from 'react-router-dom';
+import OilSummary from '../../molecules/OilSummary/OilSummary';
 
 function FamousOils() {
     const [oils, setOils] = useState(null);
@@ -21,18 +22,11 @@ function FamousOils() {
     return (
         <div className="famous-oils">
             <h2 className="famous-oils__title">Les huiles du moment</h2>
+            
             {oils && oils.map(oil => (
                 oil.highlight && (
-                <Link to={`/allOils/${oil.name}`} key={oil._id}>
-                    <h2>{oil.name}</h2>
-                    {oil.symptoms.map(e => (
-                        <div key={e.name}>
-                            {e.diffusions && e.diffusions.map(d => (
-                                <p key={d.index}>{d.name}</p>
-                            ))}
-                            <p>{e.theme}</p>
-                        </div>
-                    ))}
+                <Link to={`/allOils/${oil.name}`} key={oil._id} className="famous-oils__link">
+                    <OilSummary oilInfo={oil}/>
                 </Link>
                 )
             ))}
