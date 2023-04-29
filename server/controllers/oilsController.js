@@ -122,7 +122,8 @@ const searchOilByKeyword = async (req, res) => {
         const oils = await Oil.find({
             $or: [
                 { name: { $regex: searchKeyword, $options: "i" } },
-                { description: { $regex: searchKeyword, $options: "i" } },
+                { symptoms: { $elemMatch: { name: { $regex: searchKeyword, $options: "i" } } } },
+                { symptoms: { $elemMatch: { diffusions: { $elemMatch: { name: { $regex: searchKeyword, $options: "i" } } } } } },
             ],
         });
 
