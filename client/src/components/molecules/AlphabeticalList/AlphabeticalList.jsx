@@ -27,7 +27,7 @@ function AlphabeticalList({ words, link }) {
     return (
         <div className='list'>
             <ul ref={wordListRef} className='list__words'>
-                {words.map(word => (
+                {words.sort().map(word => (
                     <li className='list__word'>
                         <Link key={word} to={`/${link}/${word}`} className='list__word__link'>
                             {word}

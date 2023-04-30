@@ -7,7 +7,7 @@ function Account() {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {updateProfile, error, loading} = useUpdateProfile();
+    const { updateProfile } = useUpdateProfile();
     
     const signout = useSignout()
 

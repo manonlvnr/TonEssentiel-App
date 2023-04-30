@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Search from '../../molecules/Search/Search';
 import Categories from "../../molecules/Categories/Categories";
 import MostWanted from "../../molecules/MostWanted/MostWanted";
