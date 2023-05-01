@@ -1,0 +1,97 @@
+@import '../../../Reset.scss'; 
+
+//
+// Oil page
+// -----------------------------------------------------------------------------
+.oil__wrapper {
+    margin-bottom: calc(var(--space-xl)*2);
+    padding-inline: var(--space-md);
+}
+
+// Top info
+// -----------------------------------------------------------------------------
+.oil__top-info {
+    gap: var(--space-md);
+}
+
+.oil__top-info__description__title {
+    font-size: calc(var(--text-sm));
+    margin-block: var(--space-sm);
+}
+.oil__top-info__description {
+    * > li, ul {
+        @include reset-list;
+
+        font-size: calc(var(--text-xxs));
+        margin-bottom: var(--space-xs);
+    }
+}
+
+.oil__top-info__img {
+    position: relative;
+    max-width: 40%;
+    float: left;
+    margin: 0 var(--space-md) var(--space-md) 0;
+    height: auto;
+    background-color: var(--color-contrast);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+.oil__favorite-btn {
+    @include reset-button;
+
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 20rem;
+    left: 8rem;
+    color: var(--color-tertiary);
+    background-color: var(--color-primary);
+    border-radius: 4px;
+}
+
+// Main info
+// -----------------------------------------------------------------------------
+.item__content {
+    display: none;
+    
+    &.open {
+        display: block;
+        height: auto;
+    }
+}
+
+.oil__main-info {
+    background-color: var(--color-contrast);
+    padding: var(--space-sm);
+    border-radius: 4px;
+    
+    * > li {
+        @include reset-list;
+        margin-bottom: var(--space-xs);
+    }
+    
+    .oil__main-info__title {
+        font-size: calc(var(--text-sm));
+        margin-block: var(--space-sm);
+    }
+}
+
+
+.oil__accordion__item {
+    .item__btn {
+        @include reset-button;
+
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--color-contrast);
+        background-color: var(--color-primary);
+        border-radius: 4px;
+    }
+}
+
+// Bottom info
+// -----------------------------------------------------------------------------
