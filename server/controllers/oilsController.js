@@ -19,7 +19,7 @@ const getOneOilByName = async (req, res) => {
     const { oil } = req.params;
 
     try {
-        const oils = await Oil.find({ name: oil });
+        const oils = await Oil.find({ name: oil }).populate('OilsAssociated');
         if (oils.length > 0) { 
             return res.status(200).json(oils);
         }

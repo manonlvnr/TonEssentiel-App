@@ -42,11 +42,11 @@ const oilSchema = new Schema({
                 },
             }
         },
-        OilsAssociated: {
-            type: Array,
-            OilAssociated: {
-                type: Number,
+        OilsAssociated: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Oil'
             }
-        },
+        ]
 })
 module.exports = mongoose.model("Oil", oilSchema, "oils")
