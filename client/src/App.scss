@@ -9,6 +9,7 @@
     --color-secondary: #BCDABC;
     --color-tertiary: #FF7F74;
     --logo: url(https://i.imgur.com/SKiaOYm.png);
+    --color-text: #000000;
     
     &.darkMode {
         --bg-color: #0E110E;
@@ -16,6 +17,7 @@
         --color-primary: #6FA56F;
         --color-secondary: #DBE8DB;
         --logo: url(https://i.imgur.com/rXFB3X0.png);
+        --color-text: #FFFFFF;
     }
 
 // fonts-size
