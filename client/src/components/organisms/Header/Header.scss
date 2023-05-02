@@ -1,5 +1,31 @@
+@import '../../../Reset.scss';
+
 .header {
     width: 100%;
     height: 8rem;
     border-bottom: var(--color-primary) 2px solid;
+    background-image: var(--logo);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header__name {
+    color: var(--color-primary);
+    font-family: 'Libre Baskerville', serif;
+    font-size: var(--text-lg);
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding-top: var(--space-md);
+}
+
+.header__btn {
+    @include reset-button;
+
+    position: absolute;
+    top: 3.5rem;
+    left: 1rem;
+    color: var(--color-primary);
 }

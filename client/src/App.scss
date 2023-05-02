@@ -8,12 +8,14 @@
     --color-primary: #1D6D1D;
     --color-secondary: #BCDABC;
     --color-tertiary: #FF7F74;
+    --logo: url(https://i.imgur.com/SKiaOYm.png);
     
     &.darkMode {
         --bg-color: #0E110E;
         --color-contrast: #252925;
         --color-primary: #6FA56F;
         --color-secondary: #DBE8DB;
+        --logo: url(https://i.imgur.com/rXFB3X0.png);
     }
 
 // fonts-size
