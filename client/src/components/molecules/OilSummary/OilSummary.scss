@@ -22,11 +22,12 @@
 }
 
 .card__img {
-    width: 30%;
+    width: 62px;
+    height: 62px;
     position: relative;
     border-radius: 4px;
     overflow: hidden;
-    margin-right: var(--space-sm);
+    margin-inline: var(--space-sm);
     background-color: var(--color-secondary);
 
     img {
@@ -38,36 +39,51 @@
 
 
 .card__body {
-
+    width: 75%;
 }
 
 .card__body__name {
+    font-size: var(--text-xs);
+    margin: 0;
     border-bottom: solid 2px var(--color-primary);
 }
 
 .card__body__categories {
     display: flex;
-
+    justify-content: space-between;
 }
 
 .categories__themes {
     @include reset-list;
+
+    display: flex;
+    align-items: flex-start;
+    padding: var(--space-xs) 0 0 var(--space-xs);
+    border-left: solid 2px var(--color-primary);
+    gap: var(--space-xs);
     
-    .categories__themes {
-        
+    .categories__theme {
+        font-size: var(--text-xs);
+        padding: var(--space-xs);
+        border-radius: 4px;
+        background-color: var(--color-primary);
+        color: #FFF;
     }
 }
 
 .categories__diffusions {
     @include reset-list;
+
     display: flex;
     flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding-block: var(--space-xs);
 
     .categories__diffusion {
         img {
-            padding: var(--space-sm);
+            padding: var(--space-xs);
             background-color: var(--color-primary);
-            border-radius: 8px;
+            border-radius: 4px;
         }
     }
 }
