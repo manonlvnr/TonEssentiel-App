@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import OilSummary from '../../molecules/OilSummary/OilSummary';
+import Title from "../../atoms/Title/Title";
+import './DiffusionsResult.scss'
 
 function DiffusionsResult() {
     const routeParams = useParams();
@@ -22,12 +24,14 @@ function DiffusionsResult() {
 
     return (
         <div>
-            <h2>DiffusionsResult</h2>
-            {diffusions.map((oil) => (
-                <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                    <OilSummary oilInfo={oil}/>
-                </Link>
-            ))}
+            <Title children={routeParams.name} />
+            <div className="diffusion-results__wrapper">
+                {diffusions.map((oil) => (
+                    <Link to={`/allOils/${oil.name}`} key={oil._id}>
+                        <OilSummary oilInfo={oil}/>
+                    </Link>
+                ))}
+            </div>
         </div>
     );
 }

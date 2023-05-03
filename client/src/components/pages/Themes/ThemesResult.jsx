@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import OilSummary from '../../molecules/OilSummary/OilSummary';
+import Title from '../../atoms/Title/Title'
+import './ThemesResult.scss';
 
 function ThemesResult() {
     const routeParams = useParams();
@@ -23,12 +25,14 @@ function ThemesResult() {
 
     return (
         <div>
-            <h2>ThemesResult</h2>
-            {themes.map((oil) => (
-                <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                    <OilSummary oilInfo={oil}/>
-                </Link>
-            ))}
+            <Title children={routeParams.theme} />
+            <div className="themes-results__wrapper">
+                {themes.map((oil) => (
+                    <Link to={`/allOils/${oil.name}`} key={oil.id}>
+                        <OilSummary oilInfo={oil}/>
+                    </Link>
+                ))}
+            </div>
         </div>
     );
 }
