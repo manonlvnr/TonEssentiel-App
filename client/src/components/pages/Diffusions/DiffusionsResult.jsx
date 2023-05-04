@@ -9,6 +9,8 @@ function DiffusionsResult() {
 
     const [diffusions, setDiffusions] = useState([]);
 
+    const themes = []
+
     useEffect(() => {
         const fetchDiffusions = async () => {
         const response = await fetch(`/api/oils/diffusions/${routeParams.name}`);
@@ -22,6 +24,44 @@ function DiffusionsResult() {
         fetchDiffusions();
     }, [ routeParams.name ]);
 
+    // console.log(diffusions)
+    diffusions && diffusions.map((oil) => {
+        oil.symptoms.map((theme) => {
+            themes.push(theme.theme)
+        })
+    })
+
+    // console.log(themes)
+
+    const handleFilter = async (e) => {
+        e.preventDefault();
+
+        const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+        const checkedBoxesValues = Array.from(checkedBoxes).map(cb => cb.value);
+
+        console.log(checkedBoxesValues)
+
+        const response = await fetch(`/api/oils/diffusions/${routeParams.name}`);
+        const json = await response.json();
+
+        if (response.ok) {
+            setDiffusions(json);
+            console.log("diffusions", json);
+        }
+
+        if(checkedBoxesValues.length > 0) {
+            const filteredDiffusions = diffusions.filter((oil) => {
+                return oil.symptoms.some((symptom) => {
+                    return checkedBoxesValues.includes(symptom.theme)
+                })
+            })
+            setDiffusions(filteredDiffusions)
+        } else {
+            setDiffusions(json);
+        }
+    }
+
+
     return (
         <div>
             <Title children={routeParams.name} />
@@ -32,6 +72,22 @@ function DiffusionsResult() {
                     </Link>
                 ))}
             </div>
+            <form type="submit" onSubmit={handleFilter}>
+                <label for="theme">Thème :</label>
+                <input type="checkbox" id="beauté" name="beauté" value="beauté" />
+                <label for="beauté">Beauté</label>
+                <input type="checkbox" id="bien-être" name="bien-être" value="bien-être" />
+                <label for="bien-être">Bien-être</label>
+                <input type="checkbox" id="cuisine" name="cuisine" value="cuisine" />
+                <label for="cuisine">Cuisine</label>
+                <input type="checkbox" id="maison" name="maison" value="maison" />
+                <label for="maison">Maison</label>
+                <input type="checkbox" id="parfum" name="parfum" value="parfum" />
+                <label for="parfum">Parfum</label>
+                <input type="checkbox" id="santé" name="santé" value="santé" />
+                <label for="santé">Santé</label>
+                <button type="submit">Filtrer</button>
+            </form>
         </div>
     );
 }
