@@ -43,8 +43,6 @@ function Oil() {
                     setUserState(json);
                     // console.log("userState", json);
                 }
-            } else {
-                navigate("/signin");
             }
         };
 
