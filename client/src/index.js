@@ -9,6 +9,8 @@ import { ToggleModeContextProvider } from './context/ToggleModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+serviceWorkerRegistration.register();
+
 root.render(
   <React.StrictMode>
     <ToggleModeContextProvider>
@@ -19,6 +21,5 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.register();
 
 reportWebVitals();
