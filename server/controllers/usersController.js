@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const nodemailer = require("nodemailer");
 
 const createToken = (_id) => {
     return jwt.sign({ _id }, process.env.SECRET, {
@@ -153,6 +154,53 @@ const updateProfile = async (req, res) => {
     }
 };
 
+
+
+const sendResetLink = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const emailExist = await User.findOne({ email: email });
+        if (!emailExist) {
+            return res.status(400).send({ message: "Il n'existe pas d'utilisateur avec cet email" });
+        }
+
+        const token = jwt.sign({ _id: emailExist._id }, process.env.RESET_PASSWORD_KEY, { expiresIn: "10m" });
+
+        const link = `http://localhost:3000/reset-password/${emailExist._id}/${token}`;
+
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            host: 'smtp.gmail.com',
+            port: 587,
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+
+        let mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: "Reset Password",
+            text: `${link}`,
+        };
+
+        transporter.sendMail(mailOptions, (err, data) => {
+            if (err) {
+                console.log("Error occurs", err);
+            } else {
+                console.log("Email sent");
+            }
+        });
+
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+        return;
+    }
+};
+    
+
 module.exports = {
     signinUsers,
     signupUsers,
@@ -160,4 +208,5 @@ module.exports = {
     updateProfile,
     addFavorites,
     removeFavorites,
+    sendResetLink,
 };
