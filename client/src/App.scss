@@ -5,19 +5,20 @@
 // colors
     --bg-color: #F4F4F4;
     --color-contrast: #FFFFFF;
-    --color-primary: #1D6D1D;
-    --color-secondary: #BCDABC;
+    --color-primary: #809D75;
+    --color-secondary: #D9E2D6;
     --color-tertiary: #FF7F74;
     --logo: url(https://i.imgur.com/SKiaOYm.png);
-    --color-text: #000000;
+    --color-text: #304119;
+    --logo-text: #000000;
     
     &.darkMode {
-        --bg-color: #0E110E;
-        --color-contrast: #252925;
-        --color-primary: #6FA56F;
-        --color-secondary: #DBE8DB;
+        --bg-color: #1C1C1C;
+        --color-contrast: #44483E;
+        --color-secondary: #44483E;
         --logo: url(https://i.imgur.com/rXFB3X0.png);
-        --color-text: #FFFFFF;
+        --color-text: #D9E2D6;
+        --logo-text: #FFFFFF;
     }
 
 // fonts-size
