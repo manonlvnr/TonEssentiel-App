@@ -165,7 +165,7 @@ const sendResetLink = async (req, res) => {
             return res.status(400).send({ message: "Il n'existe pas d'utilisateur avec cet email" });
         }
 
-        const token = jwt.sign({ _id: emailExist._id }, process.env.RESET_PASSWORD_KEY, { expiresIn: "10m" });
+        const token = jwt.sign({ _id: emailExist._id }, process.env.SECRET, { expiresIn: "10m"});
 
         const link = `http://localhost:3000/reset-password/${emailExist._id}/${token}`;
 
@@ -199,7 +199,48 @@ const sendResetLink = async (req, res) => {
         return;
     }
 };
-    
+
+const resetPassword = async (req, res) => {
+    const { id, token } = req.params;
+    const { newPassword, confirmPassword } = req.body;
+
+    try {
+        if(newPassword || confirmPassword) {
+            if (newPassword == confirmPassword) {
+                const validToken = jwt.verify(token, process.env.SECRET);
+                if (validToken) {
+                    const userInfo = await User.findOne({ _id: id });
+                    if (userInfo) {
+                        const isStrongPassword = validator.isStrongPassword(newPassword);
+                        if (!isStrongPassword) {
+                            return res.status(400).send({message:"Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",});
+                        }
+                        const salt = await bcrypt.genSalt(10);
+                        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+                        const reset = await User.findOneAndUpdate({ _id: id }, { $set: { password: hashedPassword } });
+                        if (reset) {
+                            return res.status(200).send({ message: "Mot de passe modifié" });
+                        }
+                    } else {
+                        return res.status(400).send({ message: "Utilisateur introuvable" });
+                    }
+                } else {
+                    return res.status(400).send({ message: "Le lien a expiré" });
+                }
+            } else {
+                return res.status(400).send({ message: "Les mots de passe ne correspondent pas" });                
+            }
+        } else {
+            return res.status(400).send({ message: "Tous les champs doient être remplie" });
+        }
+    }
+
+    catch (err) {
+        res.status(400).json({ message: err.message });
+        return;
+    }
+};
 
 module.exports = {
     signinUsers,
@@ -209,4 +250,5 @@ module.exports = {
     addFavorites,
     removeFavorites,
     sendResetLink,
+    resetPassword,
 };

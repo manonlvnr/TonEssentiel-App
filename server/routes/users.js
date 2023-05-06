@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { signinUsers, signupUsers, getUserByEmail, updateProfile, addFavorites, removeFavorites, sendResetLink } = require('../controllers/usersController');
+const { signinUsers, signupUsers, getUserByEmail, updateProfile, addFavorites, removeFavorites, sendResetLink, resetPassword } = require('../controllers/usersController');
 
 // signin
 router.post('/signin', signinUsers);
@@ -24,6 +24,7 @@ router.delete('/favorites/:email', removeFavorites)
 // Mail pour envoyer le lien de reset password
 router.post('/reset-password', sendResetLink)
 
-// 
+// Page de reset password
+router.put('/reset-password/:id/:token', resetPassword)
 
 module.exports = router
