@@ -1,7 +1,7 @@
 const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router()
-const { getAllOils, getOneOilByName, getOilBySymptom, getOilByTheme, getOilByDiffusion, createOil, updateOil, searchOilByKeyword } = require('../controllers/oilsController');
+const { getAllOils, getOneOilByName, getOilBySymptom, getOilByTheme, getOilByDiffusion, searchOilByKeyword } = require('../controllers/oilsController');
 
 // GET /api/oils
 // Récupérer tous les huiles
@@ -22,13 +22,6 @@ router.get('/themes/:theme', getOilByTheme);
 // GET /api/oils/themes/:diffusion
 // Récupérer les huiles selon sa diffusion
 router.get('/diffusions/:name', getOilByDiffusion);
-
-// POST /api/oils/
-router.post('/', createOil); 
-
-// PUT /api/oils/:id
-// Mettre à jour une huile par son id
-router.put('/:id', updateOil);
 
 router.get('/search', searchOilByKeyword);
 
