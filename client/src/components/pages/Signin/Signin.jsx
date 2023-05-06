@@ -39,6 +39,7 @@ function Signin() {
             </form>
 
             <Link to="/signup">Créer un compte</Link>
+            <Link to="/forgotPassword">Mot de passe oublié ?</Link>
         </div>
     );
 }

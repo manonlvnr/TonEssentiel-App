@@ -23,6 +23,9 @@ import Sources from './components/pages/Sources/Sources';
 import Settings from './components/pages/Settings/Settings';
 import Account from './components/pages/Account/Account';
 import SearchResult from './components/pages/SearchResult/SearchResult';
+import ForgotPassword from './components/pages/ForgotPassword/ForgotPassword';
+import ResetPassword from './components/pages/ResetPassword/ResetPassword';
+
 
 function App() {
   const { user } = useAuthContext();
@@ -52,6 +55,8 @@ function App() {
             <Route path='/parametres' element={<Settings />} />
             <Route path='/account' element={user ? <Account /> : <Navigate to="/signin" />} />
             <Route path='/search' element={ <SearchResult />} />
+            <Route path='/forgotPassword' element={<ForgotPassword />} />
+            <Route path='/reset-password/:id/:token' element={<ResetPassword />} />
           </Routes>  
           <BottomBar />
       </Router>
