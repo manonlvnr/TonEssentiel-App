@@ -70,7 +70,7 @@ function SymptomsResult() {
         <>
         <Header />
         <div>
-            <Title children={routeParams.theme} />
+            <Title children={routeParams.name} />
             <div className="symptoms-results__wrapper">
                 {symptoms.map((oil) => (
                     <Link to={`/allOils/${oil.name}`} key={oil._id}>

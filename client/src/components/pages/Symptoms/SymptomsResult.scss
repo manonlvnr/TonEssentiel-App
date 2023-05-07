@@ -1,2 +1,12 @@
+@import '../../../Reset.scss';
+
 .symptoms-results__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md) var(--space-2xl) var(--space-md);
+
+    a {
+        @include reset-link;
+    }
 }
