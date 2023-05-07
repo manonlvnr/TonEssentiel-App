@@ -23,6 +23,7 @@
     &.home {
         height: 8rem;
         background-image: var(--logo);
+        padding-bottom: var(--space-md);
 
         .header__name {
             height: 9rem;
