@@ -5,7 +5,6 @@
 .list {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    gap: var(--space-md);
     padding-inline: var(--space-md);
 }
 
@@ -13,12 +12,13 @@
 // -----------------------------------------------------------------------------
 
 .list__letters {
-    height: 100vh;
+    position: sticky;
+    top: .5rem;
+    height: calc(100vh - 5rem - 3.75rem - 3.5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    border-left: var(--color-primary) 2px solid;
+    justify-content: space-evenly;
 }
 
 .list__letter {
@@ -35,20 +35,22 @@
 // -----------------------------------------------------------------------------
 
 .list__words {
-    margin: var(--space-md) 0 0 0;
-    padding: 0;
+    margin: 0;
+    padding: var(--space-md) var(--space-lg) 0 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-md);
+    border-right: var(--color-primary) 2px solid;
 }
 
 .list__word {
     display: block;
     list-style: none;
     padding: var(--space-sm) var(--space-md);
-    color: var(--color-contrast);
-    background-color: var(--color-primary);
+    color: var(--color-text);
+    background-color: var(--color-secondary);
     border-radius: 4px;
+    box-shadow: var(--box-shadow);
 
     a {
         color: inherit;
