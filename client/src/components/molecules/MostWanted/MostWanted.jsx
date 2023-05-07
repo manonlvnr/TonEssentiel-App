@@ -10,7 +10,7 @@ function MostWanted() {
     const mostWantedElements = mostWantedSymptoms.map(symptom => {
         return (                
                 <SwiperSlide key={symptom}>
-                        <Link className="mostWanted__description">{symptom}</Link>
+                    <Link to={`/symptoms/${symptom}`} className="mostWanted__description">{symptom}</Link>
                 </SwiperSlide>
         )
     });
