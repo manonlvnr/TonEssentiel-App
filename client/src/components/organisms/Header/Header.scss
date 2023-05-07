@@ -1,31 +1,42 @@
 @import '../../../Reset.scss';
 
 .header {
+    height: 5rem;
     width: 100%;
-    height: 8rem;
     border-bottom: var(--color-primary) 2px solid;
-    background-image: var(--logo);
+    background-image: var(--logo-small);
     background-repeat: no-repeat;
     background-position: center;
+
+    .header__name {
+        color: var(--logo-text);
+        font-family: 'Libre Baskerville', serif;
+        font-size: var(--text-md);
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding-top: var(--space-md);
+    }
+
+    &.home {
+        height: 8rem;
+        background-image: var(--logo);
+
+        .header__name {
+            height: 9rem;
+            font-size: var(--text-lg);
+        }
+    }
 }
 
-.header__name {
-    color: var(--color-primary);
-    font-family: 'Libre Baskerville', serif;
-    font-size: var(--text-lg);
-    height: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding-top: var(--space-md);
-}
 
 .header__btn {
     @include reset-button;
 
     position: absolute;
-    top: 3.5rem;
-    left: 1rem;
+    top: 1.5rem;
+    left: 2rem;
     color: var(--color-primary);
 }
