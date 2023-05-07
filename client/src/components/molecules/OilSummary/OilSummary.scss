@@ -7,7 +7,7 @@
     background-color: var(--color-contrast);
     border-radius: 0.5rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: var(--space-sm);
+    // padding: var(--space-sm);
 
     &::after {
         content: "";
@@ -30,13 +30,13 @@
 }
 
 .card__img {
-    width: 62px;
-    height: 62px;
+    width: 80px;
+    height: auto;
     position: relative;
-    border-radius: 4px;
+    border-radius: 0.5rem;
     overflow: hidden;
-    margin-inline: var(--space-sm);
-    background-color: var(--color-secondary);
+    background-color: var(--bg-color);
+    padding: var(--space-sm);
 
     img {
         width: 100%;
@@ -48,12 +48,20 @@
 
 .card__body {
     width: 75%;
+    padding: var(--space-sm);
+    display: flex;
+}
+
+.card__body__left {
+    flex: 2;
 }
 
 .card__body__name {
-    font-size: var(--text-xs);
     margin: 0;
-    border-bottom: solid 2px var(--color-primary);
+    color: var(--color-text);
+    font-size: var(--text-md);
+    font-weight: 500;
+    border-bottom: solid 1px var(--color-primary);
 }
 
 .card__body__categories {
@@ -61,37 +69,39 @@
     justify-content: space-between;
 }
 
-.categories__themes {
-    @include reset-list;
-
-    display: flex;
-    align-items: flex-start;
-    padding: var(--space-xs) 0 0 var(--space-xs);
-    border-left: solid 2px var(--color-primary);
-    gap: var(--space-xs);
-    
-    .categories__theme {
-        font-size: var(--text-xs);
-        padding: var(--space-xs);
-        border-radius: 4px;
-        background-color: var(--color-primary);
-        color: #FFF;
-    }
-}
-
 .categories__diffusions {
     @include reset-list;
 
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
-    padding-block: var(--space-xs);
+    gap: var(--space-sm);
+    padding-top: var(--space-sm);
 
     .categories__diffusion {
         img {
-            padding: var(--space-xs);
-            background-color: var(--color-primary);
-            border-radius: 4px;
+            color: var(--color-primary)
         }
     }
 }
+
+.card__body__right {
+    @include reset-list;
+
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xs) 0 0 var(--space-xs);
+    margin: 0 0.5rem 0 0;
+    border-left: solid 1px var(--color-primary);
+    gap: var(--space-xs);
+    
+    .categories__theme {
+        width: 100%;
+        text-align: center;
+        font-size: var(--text-xxs);
+        padding: var(--space-xxs);
+        border-radius: 4px;
+        border: solid 1px var(--color-primary);
+        color: var(--color-text);
+    }
+}
+
