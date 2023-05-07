@@ -1,4 +1,40 @@
-.infos {
+@import '../../../Reset.scss'; 
+
+.account__wrapper {
+    padding: var(--space-lg) var(--space-md) var(--space-2xl) var(--space-md);
+}
+
+.account__form {
     display: flex;
     flex-direction: column;
+    gap: var(--space-xxs);
+
+    .account__form__title {
+        font-size: var(--text-lg);
+        margin: 0 0 var(--space-md) 0;
+        color: var(--color-text);
+    }
+
+}
+.account__form__btn, 
+.account__logout {
+    @include reset-button;
+
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: var(--space-sm);
+    align-self: flex-end;
+    padding: var(--space-sm);
+    margin-top: var(--space-lg);
+    font-size: var(--text-md);
+    color: var(--color-text);
+    background-color: var(--color-secondary);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.account__logout {
+    align-self: flex-start;
+    margin-top: var(--space-2xl);
 }

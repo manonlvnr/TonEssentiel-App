@@ -2,6 +2,11 @@ import { useEffect, useState } from "react"
 import { useSignout } from "../../../hooks/useSignout"
 import "./Account.scss"
 import { useUpdateProfile } from "../../../hooks/useUpdateProfile";
+import Label from "../../atoms/Label/Label";
+import Header from "../../organisms/Header/Header";
+import Title from "../../atoms/Title/Title";
+import Input from "../../atoms/Input/Input";
+import { IconDeviceFloppy, IconPower } from "@tabler/icons-react";
 
 function Account() {
     const [userName, setUserName] = useState("");
@@ -41,27 +46,36 @@ function Account() {
     }
 
     return (
-        <div>
-            <h1>Mon compte</h1>
+        <>
+        <Header />
+        <Title children={"Mon compte"}/>
+        <div className="account__wrapper">
                 {userState.map((user) => (
-                    <form className="infos" onSubmit={handleSubmit}>
-                        <h3>Mes informations</h3>
-                        <label htmlFor="name">nom d'utilisateur</label>
-                        <input type="text" name="name" defaultValue={user.userName} onChange={(e) => setUserName(e.target.value)}/>
-                        
-                        <label htmlFor="email">email</label>
-                        <input type="email" name="email" defaultValue={user.email} onChange={(e) => setEmail(e.target.value)}/>
+                    <form className="account__form" onSubmit={handleSubmit}>
+                        <h3 className="account__form__title">Mes informations</h3>
+                        <Label label={"Nom d'utilisateur"}/>
+                        <Input type="text" name="name" defaultValue={user.userName} onChange={(e) => setUserName(e.target.value)}/>
 
-                        <label htmlFor="password">mot de passe</label>
-                        <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <Label label={"Email"}/>
+                        <Input type="email" name="email" defaultValue={user.email} onChange={(e) => setEmail(e.target.value)}/>
+
+                        <Label label={"Mot de passe"}/>
+                        <Input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         {/* <label htmlFor="password">confirmer le mot de passe</label>
                         <input type="password" name="password" /> */}
 
-                        <button type="submit">Modifier</button>
+                        <button className="account__form__btn" type="submit">
+                            <IconDeviceFloppy />
+                            <div>Modifier</div>
+                        </button>
                     </form>
-                    ))}
-            <button onClick={handleSignout}>Déconnexion</button>
+                ))}
+            <button className="account__logout" onClick={handleSignout}>
+                <IconPower />
+                <div>Déconnexion</div>
+            </button>
         </div>
+        </>
     )
 }
 
