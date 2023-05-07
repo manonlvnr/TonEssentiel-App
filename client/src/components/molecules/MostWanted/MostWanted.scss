@@ -1,12 +1,19 @@
 .mostWanted__wrapper {
     border-block: 2px solid var(--color-primary);
     padding: var(--space-md);
+
+    .swiper-slide {
+        max-width: 8rem;
+        background-color: var(--color-secondary);
+        border-radius: 0.5rem;
+        padding: var(--space-md);
+    }
 }
 
 .mostWanted__description {
     text-align: center;
     font-size: var(--text-xs);
-    color: var(--color-contrast);
+    color: var(--color-text);
     font-weight: bold;
     text-decoration: none;
 }
@@ -17,10 +24,3 @@
     color: var(--color-text);
 }
 
-.swiper-slide {
-    width: max-content;
-    background-color: var(--color-primary);
-    border-radius: 0.5rem;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: var(--space-md);
-}
