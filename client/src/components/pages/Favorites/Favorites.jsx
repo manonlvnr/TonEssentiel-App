@@ -5,6 +5,7 @@ import { IconTrash } from '@tabler/icons-react';
 import './Favorites.scss';
 import Header from "../../organisms/Header/Header";
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 function Favorites() {
@@ -41,9 +42,15 @@ function Favorites() {
                     body: JSON.stringify({ favorites: oilId }),
                 }
             );
-            const json = await response.json();
-            console.log(json);
-            setUserState([json]);
+
+            if (response.ok) {
+                const json = await response.json();
+                console.log(json);
+                toast.success('Huile supprimée des favoris');
+                setUserState([json]);
+            } else {
+                toast.error('Une erreur est survenue');
+            }
         };
 
         removeFavorites();
@@ -52,8 +59,9 @@ function Favorites() {
     return (
         <>
         <Header />
+        <Toaster   position="top-center"/>
+        <Title children={"Favoris"} />
         <div className="favorites">
-            <Title children={"Favoris"} />
             <div className="favorites__container">
                 {userState.map((user) => (
                     user.favorites.map((favorite) => (
