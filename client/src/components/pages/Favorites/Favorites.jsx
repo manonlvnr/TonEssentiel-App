@@ -4,6 +4,7 @@ import OilSummary from '../../molecules/OilSummary/OilSummary';
 import { IconTrash } from '@tabler/icons-react';
 import './Favorites.scss';
 import Header from "../../organisms/Header/Header";
+import { Link } from 'react-router-dom';
 
 
 function Favorites() {
@@ -57,7 +58,9 @@ function Favorites() {
                 {userState.map((user) => (
                     user.favorites.map((favorite) => (
                         <div className="favorites__container__card">
-                            <OilSummary oilInfo={favorite}/>
+                            <Link to={`/allOils/${favorite.name}`} key={favorite._id}>
+                                <OilSummary oilInfo={favorite}/>
+                            </Link>
                             {console.log("favorite", favorite)}
                             <button className='favorites__delete-btn' onClick={(e) => handleRemoveFavorites(e, favorite._id)}>
                                 <IconTrash color='white'/>
