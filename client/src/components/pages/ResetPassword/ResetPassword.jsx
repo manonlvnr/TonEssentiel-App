@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../../organisms/Header/Header";
 
 
 function ResetPassword() {
@@ -27,6 +28,8 @@ function ResetPassword() {
     };
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Forget Password</h1>
             <form onSubmit={handleNewPassword}>
@@ -38,6 +41,7 @@ function ResetPassword() {
             </form>
             {/* ToDo afficher les message d'erreur ou de reussite */}
         </div>
+        </>
     )
 }
 

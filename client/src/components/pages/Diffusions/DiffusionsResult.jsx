@@ -4,6 +4,7 @@ import OilSummary from '../../molecules/OilSummary/OilSummary';
 import Title from "../../atoms/Title/Title";
 import './DiffusionsResult.scss'
 import Sheet from 'react-modal-sheet';
+import Header from "../../organisms/Header/Header";
 
 
 
@@ -69,6 +70,8 @@ function DiffusionsResult() {
 
 
     return (
+        <>
+        <Header />
         <div>
             <Title children={routeParams.name} />
             <div className="diffusion-results__wrapper">
@@ -109,6 +112,7 @@ function DiffusionsResult() {
             </div>
 
         </div>
+        </>
     );
 }
 

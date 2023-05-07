@@ -4,6 +4,7 @@ import "./SymptomsResult.scss";
 import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Title from "../../atoms/Title/Title";
 import Sheet from "react-modal-sheet";
+import Header from "../../organisms/Header/Header";
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -66,6 +67,8 @@ function SymptomsResult() {
     };
 
     return (
+        <>
+        <Header />
         <div>
             <Title children={routeParams.theme} />
             <div className="symptoms-results__wrapper">
@@ -178,6 +181,7 @@ function SymptomsResult() {
                 </Sheet>
             </div>
         </div>
+        </>
     );
 }
 

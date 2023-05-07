@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Header from "../../organisms/Header/Header";
+
 
 function ForgotPassword() {
     const [email, setEmail] = useState();
@@ -22,6 +24,8 @@ function ForgotPassword() {
     };
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Forget Password</h1>
             <form onSubmit={handleEmail}>
@@ -31,6 +35,7 @@ function ForgotPassword() {
             </form>
             {/* ToDo afficher les message d'erreur ou de reussite */}
         </div>
+        </>
     )
 }
 

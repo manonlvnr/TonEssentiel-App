@@ -4,7 +4,6 @@ import OilsForm from './components/OilsForm';
 import Homepage from './components/pages/Homepage/Homepage';
 import Favorites from './components/pages/Favorites/Favorites';
 import BottomBar from './components/organisms/BottomBar/BottomBar';
-import Header from './components/organisms/Header/Header';
 import DiffusionsList from './components/pages/Diffusions/DiffusionsList';
 import AllOils from './components/pages/AllOils/AllOils';
 import ThemesList from './components/pages/Themes/ThemesList';
@@ -33,7 +32,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-          <Header />
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/admin' element={<OilsForm />} />

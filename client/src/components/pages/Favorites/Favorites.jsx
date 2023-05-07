@@ -3,6 +3,8 @@ import Title from '../../atoms/Title/Title'
 import OilSummary from '../../molecules/OilSummary/OilSummary';
 import { IconTrash } from '@tabler/icons-react';
 import './Favorites.scss';
+import Header from "../../organisms/Header/Header";
+
 
 function Favorites() {
     const [userState, setUserState] = useState([]);
@@ -47,6 +49,8 @@ function Favorites() {
     }
 
     return (
+        <>
+        <Header />
         <div className="favorites">
             <Title children={"Favoris"} />
             <div className="favorites__container">
@@ -63,6 +67,7 @@ function Favorites() {
                 ))}
             </div>
         </div>
+        </>
     )
 }
 

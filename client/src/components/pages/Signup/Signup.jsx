@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../../../hooks/useSignup";
+import Header from "../../organisms/Header/Header";
 
 function Signup() {
     const [userName, setUserName] = useState("");
@@ -15,6 +16,8 @@ function Signup() {
     } 
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
@@ -47,6 +50,7 @@ function Signup() {
                 {error && <div>{error}</div>}
             </form>
         </div>
+        </>
     );
 }
 

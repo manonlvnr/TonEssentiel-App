@@ -7,6 +7,8 @@ import "./Oil.scss";
 import { IconPlus, IconMinus, IconHeart, IconHeartFilled } from "@tabler/icons-react";
 import OilSummary from "../../molecules/OilSummary/OilSummary";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Header from "../../organisms/Header/Header";
+
 
 function Oil() {
     const routeParams = useParams();
@@ -113,6 +115,8 @@ function Oil() {
     };
     console.log(oil);
     return (
+        <>
+        <Header />
         <div className="oil__wrapper">
             {oil && oil.map((oil) => (
                 <div key={oil._id}>
@@ -212,6 +216,7 @@ function Oil() {
                 )}
             </button> }
         </div>
+        </>
     );
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import OilSummary from "../../molecules/OilSummary/OilSummary";
+import Header from "../../organisms/Header/Header";
 
 function SearchResult() {
     // const [searchParams, setSearchParams] = useSearchParams()
@@ -26,6 +27,8 @@ function SearchResult() {
     console.log(searchResult);
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Search Result</h1>
             {searchResult.map((result) => (
@@ -34,6 +37,7 @@ function SearchResult() {
                 </div>
             ))}
         </div>
+        </>
     );
 }
 

@@ -2,6 +2,7 @@ import './AllOils.scss';
 import { useEffect, useState } from "react";
 import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
 import Title from '../../atoms/Title/Title';
+import Header from "../../organisms/Header/Header";
 
 function AllOils() {
     const [oils, setOils] = useState(null);
@@ -29,6 +30,7 @@ function AllOils() {
 
     return (
         <div>
+            <Header />
             <Title children={"Huiles de A à Z"} />
             <div>
                 <AlphabeticalList words={allOils} link="allOils"/>

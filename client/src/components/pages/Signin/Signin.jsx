@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSignin } from "../../../hooks/useSignin";
 import { Link } from "react-router-dom";
+import Header from "../../organisms/Header/Header";
 
 function Signin() {
     const [email, setEmail] = useState("");
@@ -15,6 +16,8 @@ function Signin() {
     } 
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Signin</h1>
             <form onSubmit={handleSubmit}>
@@ -41,6 +44,7 @@ function Signin() {
             <Link to="/signup">Créer un compte</Link>
             <Link to="/forgotPassword">Mot de passe oublié ?</Link>
         </div>
+        </>
     );
 }
 

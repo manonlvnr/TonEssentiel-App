@@ -4,6 +4,7 @@ import OilSummary from '../../molecules/OilSummary/OilSummary';
 import Title from '../../atoms/Title/Title'
 import './ThemesResult.scss';
 import Sheet from 'react-modal-sheet';
+import Header from "../../organisms/Header/Header";
 
 
 function ThemesResult() {
@@ -59,45 +60,48 @@ function ThemesResult() {
 
 
     return (
-        <div>
-            <Title children={routeParams.theme} />
-            <div className="themes-results__wrapper">
-                {themes.map((oil) => (
-                    <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                        <OilSummary oilInfo={oil}/>
-                    </Link>
-                ))}
-            <button onClick={() => setOpen(true)}>Open sheet</button>
+        <>
+            <Header />
+            <div>
+                <Title children={routeParams.theme} />
+                <div className="themes-results__wrapper">
+                    {themes.map((oil) => (
+                        <Link to={`/allOils/${oil.name}`} key={oil.id}>
+                            <OilSummary oilInfo={oil}/>
+                        </Link>
+                    ))}
+                <button onClick={() => setOpen(true)}>Open sheet</button>
 
-            <Sheet isOpen={isOpen} onClose={() => setOpen(false)} >
-            <Sheet.Container>
-                <Sheet.Header />
-                <Sheet.Content>
-                    <div>
-                        <form type="submit" onSubmit={handleFilter}>
-                            <label for="diffusions">Diffusions :</label>
-                            <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" />
-                            <label for="voie orale">Voie orale</label>
-                            <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" />
-                            <label for="diffusion">Diffusion</label>
-                            <input type="checkbox" id="massage" name="massage" value="massage" />
-                            <label for="massage">Massage</label>
-                            <input type="checkbox" id="bain" name="bain" value="bain" />
-                            <label for="bain">Bain</label>
-                            <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" />
-                            <label for="cosmétique">Cosmétique</label>
-                            <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" />
-                            <label for="inhalation">Inhalation</label>
-                            <button type="submit">Filtrer</button>
-                        </form>
-                    </div>
-                </Sheet.Content>
-            </Sheet.Container>
+                <Sheet isOpen={isOpen} onClose={() => setOpen(false)} >
+                <Sheet.Container>
+                    <Sheet.Header />
+                    <Sheet.Content>
+                        <div>
+                            <form type="submit" onSubmit={handleFilter}>
+                                <label for="diffusions">Diffusions :</label>
+                                <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" />
+                                <label for="voie orale">Voie orale</label>
+                                <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" />
+                                <label for="diffusion">Diffusion</label>
+                                <input type="checkbox" id="massage" name="massage" value="massage" />
+                                <label for="massage">Massage</label>
+                                <input type="checkbox" id="bain" name="bain" value="bain" />
+                                <label for="bain">Bain</label>
+                                <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" />
+                                <label for="cosmétique">Cosmétique</label>
+                                <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" />
+                                <label for="inhalation">Inhalation</label>
+                                <button type="submit">Filtrer</button>
+                            </form>
+                        </div>
+                    </Sheet.Content>
+                </Sheet.Container>
 
-            <Sheet.Backdrop />
-            </Sheet>
+                <Sheet.Backdrop />
+                </Sheet>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
