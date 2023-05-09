@@ -45,7 +45,6 @@ function ResetPassword() {
                 <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 <button type="submit">Enregistrer le nouveau mot de passe</button>
             </form>
-            {/* ToDo afficher les message d'erreur ou de reussite */}
         </div>
         </>
     )
