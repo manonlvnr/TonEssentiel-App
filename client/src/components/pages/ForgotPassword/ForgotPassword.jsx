@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../../organisms/Header/Header";
-
+import { toast, Toaster } from 'react-hot-toast';
 
 function ForgotPassword() {
     const [email, setEmail] = useState();
@@ -17,8 +17,13 @@ function ForgotPassword() {
             },
             body: JSON.stringify({ email }),
         });
-        const json = await response.json();
-        console.log(json);
+        if (response.ok) {
+            toast.success('Email envoyé');
+            const json = await response.json();
+            console.log(json);
+        } else {
+            toast.error('Une erreur est survenue, l\'email n\'a pas été envoyé');
+        }
     }
     sendResetEmail();
     };
@@ -26,6 +31,7 @@ function ForgotPassword() {
     return (
         <>
         <Header />
+        <Toaster   position="top-center"/>
         <div>
             <h1>Forget Password</h1>
             <form onSubmit={handleEmail}>
@@ -33,7 +39,6 @@ function ForgotPassword() {
                 <input type="email" placeholder="exemple@exemple.com" value={email || ""} onChange={(e) => setEmail(e.target.value)} required />
                 <button type="submit">Envoyer</button>
             </form>
-            {/* ToDo afficher les message d'erreur ou de reussite */}
         </div>
         </>
     )
