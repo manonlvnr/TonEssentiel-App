@@ -4,6 +4,8 @@
 // Menu
 // -----------------------------------------------------------------------------
 .menu {
+    display: flex;
+    flex-direction: column;
     margin-top: var(--space-xl);
     padding:var(--space-md) var(--space-2xl) var(--space-2xl) var(--space-md);
 }
@@ -13,41 +15,72 @@
 .menu__categories {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
     gap: var(--space-sm);
+    margin: 0;
+    padding: 0 0 var(--space-2xl) 0;
 }
 
 .menu__categories__link {
+    @include reset-link;
+
     display: flex;
     justify-content: space-between;
     list-style: none;
     padding: var(--space-sm) var(--space-md);
-    color: var(--color-contrast);
-    background-color: var(--color-primary);
+    color: var(--text-color);
+    background-color: var(--color-secondary);
     border-radius: 4px;
-
-    a {
-        @include reset-link;
-    }
+    box-shadow: var(--box-shadow);
 }
 
 // Account part
 // -----------------------------------------------------------------------------
+.menu__account {
+    @include reset-link;
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin:  0 0 var(--space-2xl) 0;
+    padding: var(--space-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: var(--color-contrast);
 
-.menu__account__btn {
-    @include reset-button;
-
-    a {
-        @include reset-link;
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        bottom: 0.2rem;
+        left: 0.2rem;
+        border: solid 2px var(--color-primary);
+        border-radius: 0.5rem;
     }
 }
 
 // Infos part
 // -----------------------------------------------------------------------------
+.menu__infos {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-sm);
+}
 
 .menu__infos__link {
-    a {
-        @include reset-link;
-    }
+    @include reset-link;
+
+    display: flex;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: var(--space-xs) var(--space-md);
+    color: var(--text-color);
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
 }

@@ -2,55 +2,57 @@ import { Link } from "react-router-dom";
 import './Menu.scss';
 import Search from "../../molecules/Search/Search";
 import { IconChevronRight, IconHelpOctagon, IconAlertOctagon, IconUser, IconBook2, IconSettings } from "@tabler/icons-react";
+import MenuHeader from "../../organisms/Header/MenuHeader";
 
 function Menu() {
 
     return (
+        <>
+        <MenuHeader />
+        <Search />
         <div className="menu">
-            <Search />
             <div className="menu__categories">
-                <div className="menu__categories__link">
-                    <Link to="/allOils">Toutes les huiles</Link>
+                <Link to="/allOils" className="menu__categories__link">
+                    <div>Toutes les huiles</div>
                     <IconChevronRight />
-                </div>
-                <div className="menu__categories__link">
-                    <Link to="/symptoms">Symptômes</Link>
+                </Link>
+                <Link to="/symptoms" className="menu__categories__link">
+                    <div>Symptômes</div>
                     <IconChevronRight />
-                </div>
-                <div className="menu__categories__link">
-                    <Link to="/diffusions">Diffusons</Link>
+                </Link>
+                <Link to="/diffusions" className="menu__categories__link">
+                    <div>Diffusons</div>
                     <IconChevronRight />
-                </div>
-                <div className="menu__categories__link">
-                    <Link to="/themes">Thèmes</Link>
+                </Link>
+                <Link to="/themes" className="menu__categories__link">
+                    <div>Thèmes</div>
                     <IconChevronRight />
-                </div>
+                </Link>
             </div>
-            <div className="menu__account">
-                <button className="menu__account__btn">
-                    <IconUser />
-                    <Link to="/account">Mon compte</Link>
-                </button>
-            </div>
-            <div className="menu__infos">
-                <div className="menu__infos__link">
+            <Link to="/account" className="menu__account">
+                <IconUser />
+                <div>Mon compte</div>
+            </Link>
+            <div to="/faq" className="menu__infos">
+                <Link className="menu__infos__link">
                     <IconHelpOctagon />
-                    <Link to="/faq">FAQ</Link>
-                </div>
-                <div className="menu__infos__link">
+                    <div>FAQ</div>
+                </Link>
+                <Link to="/utilisations" className="menu__infos__link">
                     <IconAlertOctagon />
-                    <Link to="/utilisations">Précautions d'utilisation</Link>
-                </div>
-                <div className="menu__infos__link">
+                    <div>Précautions d'utilisation</div>
+                </Link>
+                <Link to="/sources" className="menu__infos__link">
                     <IconBook2 />
-                    <Link to="/sources">Sources</Link>
-                </div>
-                <div className="menu__infos__link">
+                    <div>Sources</div>
+                </Link>
+                <Link to="/parametres" className="menu__infos__link">
                     <IconSettings />
-                    <Link to="/parametres">Paramêtres</Link>
-                </div>
+                    <div>Paramêtres</div>
+                </Link>
             </div>
         </div>
+        </>
     )
 }
 

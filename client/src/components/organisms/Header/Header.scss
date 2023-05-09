@@ -30,6 +30,17 @@
             font-size: var(--text-lg);
         }
     }
+
+    &.menu {
+        background-image: none;
+        margin: 0;
+        padding: 0 0 var(--space-md) 0;
+
+        .header__name {
+            font-size: var(--text-lg);
+            color: var(--color-tertiary);
+        }
+    }
 }
 
 
