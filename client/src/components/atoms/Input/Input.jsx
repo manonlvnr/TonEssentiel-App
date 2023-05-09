@@ -5,6 +5,7 @@ function Input(props) {
         <input 
             type={props.type}
             name={props.name}
+            placeholder={props.placeholder}
             defaultValue={props.defaultValue}
             onChange={props.onChange}
             value={props.value}

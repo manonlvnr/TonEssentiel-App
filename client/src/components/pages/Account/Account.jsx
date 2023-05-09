@@ -49,7 +49,7 @@ function Account() {
     return (
         <>
         <Header />
-        <Toaster   position="top-center"/>
+        <Toaster position="top-center"/>
         <Title children={"Mon compte"}/>
         <div className="account__wrapper">
                 {userState.map((user) => (

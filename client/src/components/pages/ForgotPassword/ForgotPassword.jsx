@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Header from "../../organisms/Header/Header";
 import { toast, Toaster } from 'react-hot-toast';
+import "./ForgotPassword.scss";
+import Title from "../../atoms/Title/Title";
+import Input from "../../atoms/Input/Input";
+import Label from "../../atoms/Label/Label";
 
 function ForgotPassword() {
     const [email, setEmail] = useState();
@@ -31,12 +35,12 @@ function ForgotPassword() {
     return (
         <>
         <Header />
-        <Toaster   position="top-center"/>
-        <div>
-            <h1>Forget Password</h1>
+        <Toaster position="top-center"/>
+        <Title children={"Mot de passe oublié"}/>
+        <div className="forgot-password__wrapper">
             <form onSubmit={handleEmail}>
-                <label htmlFor="email">Email Address</label>
-                <input type="email" placeholder="exemple@exemple.com" value={email || ""} onChange={(e) => setEmail(e.target.value)} required />
+                <Label label={"Entrez votre adresse email :"}/>
+                <Input type="email" name="email" placeholder="exemple@exemple.com" value={email || ""} onChange={(e) => setEmail(e.target.value)} required />
                 <button type="submit">Envoyer</button>
             </form>
         </div>

@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../organisms/Header/Header";
 import { toast, Toaster } from 'react-hot-toast';
+import "./ResetPassword.scss";
+import Title from "../../atoms/Title/Title";
+import Input from "../../atoms/Input/Input";
+import Label from "../../atoms/Label/Label";
 
 function ResetPassword() {
     const [newPassword, setNewPassword] = useState("");
@@ -35,14 +39,14 @@ function ResetPassword() {
     return (
         <>
         <Header />
-        <Toaster   position="top-center"/>
-        <div>
-            <h1>Forget Password</h1>
+        <Toaster position="top-center"/>
+        <Title children={"Réinitialisation du mot de passe"}/>
+        <div className="reset-password__wrapper">
             <form onSubmit={handleNewPassword}>
-                <label htmlFor="password">Entrez le nouveau mot de passe : </label>
-                <input type="password" name="newPassword" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
-                <label htmlFor="password">Confirmez le nouveau mot de passe : </label>
-                <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                <Label label={"Entrez le nouveau mot de passe :"}/>
+                <Input type="password" name="newPassword" placeholder="Nouveau mot de passe" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+                <Label label={"Confirmez le nouveau mot de passe :"}/>
+                <Input type="password" name="confirmPassword" placeholder="Confirmez le nouveau mot de passe" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 <button type="submit">Enregistrer le nouveau mot de passe</button>
             </form>
         </div>
