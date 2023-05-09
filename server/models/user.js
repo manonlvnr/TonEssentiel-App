@@ -30,21 +30,21 @@ const userSchema = new Schema({
     userSchema.statics.signup = async function( userName, email, password ) {
 
         if(!userName || !email || !password) {
-            throw new Error('Please fill all fields')
+            throw new Error('Merci de remplir tous les champs')
         }
 
         if(!validator.isEmail(email)) {
-            throw new Error('Please enter a valid email')
+            throw new Error('Merci de renseigner un email valide')
         }
 
         if(!validator.isStrongPassword(password)) {
-            throw new Error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character')
+            throw new Error('Le mot de passe doit comporter au moins 8 caractères et contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.')
         }
 
         const exists = await this.findOne({ email })
 
         if(exists) {
-            throw new Error('User already exists')
+            throw new Error('Cet email est déjà utilisé')
         }
 
         const salt = await bcrypt.genSalt(10)
@@ -61,17 +61,17 @@ const userSchema = new Schema({
 
     userSchema.statics.signin = async function( email, password ) {
         if( !email || !password ) {
-            throw new Error('Please fill all fields')
+            throw new Error('Merci de remplir tous les champs')
         }
 
         const userExist = await this.findOne({ email })
         if(!userExist) {
-            throw new Error('User does not exist or the email is incorrect')
+            throw new Error('L\'utilisateur n\'existe pas ou l\'email est incorrect')
         }
 
         const passwordMatch = await bcrypt.compare(password, userExist.password)
         if(!passwordMatch) {
-            throw new Error('Password is incorrect')
+            throw new Error('Le mot de passe est incorrect')
         }
 
         return userExist
