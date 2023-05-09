@@ -7,6 +7,7 @@ import Header from "../../organisms/Header/Header";
 import Title from "../../atoms/Title/Title";
 import Input from "../../atoms/Input/Input";
 import { IconDeviceFloppy, IconPower } from "@tabler/icons-react";
+import { Toaster } from 'react-hot-toast';
 
 function Account() {
     const [userName, setUserName] = useState("");
@@ -48,6 +49,7 @@ function Account() {
     return (
         <>
         <Header />
+        <Toaster   position="top-center"/>
         <Title children={"Mon compte"}/>
         <div className="account__wrapper">
                 {userState.map((user) => (
