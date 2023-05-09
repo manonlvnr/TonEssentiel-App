@@ -8,6 +8,10 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    a {
+        @include reset-link;
+    }
+
     .header__name {
         color: var(--logo-text);
         font-family: 'Libre Baskerville', serif;

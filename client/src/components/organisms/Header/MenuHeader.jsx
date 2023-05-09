@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../../atoms/BackButton/BackButton"
 import "./Header.scss"
 
@@ -10,7 +10,9 @@ function MenuHeader() {
 
     return (
         <header className="header menu">
-            <h1 className="header__name">Menu</h1>
+            <Link to="/">  
+                <h1 className="header__name">Menu</h1>
+            </Link>
             <BackButton handleback={handleback}/>
         </header>
     )
