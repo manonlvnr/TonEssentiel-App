@@ -102,7 +102,7 @@ const updateProfile = async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).send({ message: "User not found" });
+            return res.status(404).send({ message: "Pas d'utilisateur trouvé" });
         }
 
         const updates = {};
@@ -115,7 +115,7 @@ const updateProfile = async (req, res) => {
             if (emailExist) {
                 return res
                     .status(400)
-                    .send({ message: "Email already exists" });
+                    .send({ message: "L'email existe déjà !" });
             }
             if (!validator.isEmail(newEmail)) {
                 return res
@@ -134,7 +134,7 @@ const updateProfile = async (req, res) => {
                         .status(400)
                         .send({
                             message:
-                                "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+                                "Le mot de passe doit comporter au moins 8 caractères et contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
                         });
                 }
                 const salt = await bcrypt.genSalt(10);

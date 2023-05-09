@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSignin } from "../../../hooks/useSignin";
 import { Link } from "react-router-dom";
 import Header from "../../organisms/Header/Header";
+import { Toaster } from 'react-hot-toast';
 
 function Signin() {
     const [email, setEmail] = useState("");
@@ -18,6 +19,7 @@ function Signin() {
     return (
         <>
         <Header />
+        <Toaster   position="top-center"/>
         <div>
             <h1>Signin</h1>
             <form onSubmit={handleSubmit}>

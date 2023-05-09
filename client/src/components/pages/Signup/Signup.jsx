@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSignup } from "../../../hooks/useSignup";
 import Header from "../../organisms/Header/Header";
+import { Toaster } from 'react-hot-toast';
 
 function Signup() {
     const [userName, setUserName] = useState("");
@@ -18,6 +19,7 @@ function Signup() {
     return (
         <>
         <Header />
+        <Toaster   position="top-center"/>
         <div>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
