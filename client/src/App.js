@@ -24,6 +24,7 @@ import Account from './components/pages/Account/Account';
 import SearchResult from './components/pages/SearchResult/SearchResult';
 import ForgotPassword from './components/pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './components/pages/ResetPassword/ResetPassword';
+import NotFound from './components/pages/NotFound/NotFound';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
             <Route path='/search' element={ <SearchResult />} />
             <Route path='/forgotPassword' element={<ForgotPassword />} />
             <Route path='/reset-password/:id/:token' element={<ResetPassword />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>  
           <BottomBar />
       </Router>

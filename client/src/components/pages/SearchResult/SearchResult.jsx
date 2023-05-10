@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Header from "../../organisms/Header/Header";
+import Title from "../../atoms/Title/Title";
+import "./SearchResult.scss";
 
 function SearchResult() {
     // const [searchParams, setSearchParams] = useSearchParams()
@@ -29,13 +31,17 @@ function SearchResult() {
     return (
         <>
         <Header />
-        <div>
-            <h1>Search Result</h1>
-            {searchResult.map((result) => (
-                <div>
+        <Title children={"Résultat de recherche"} />
+        <div className="search-result__wrapper">
+        {searchResult.length === 0 ? (
+            <p>Aucun résultat ne correspondant à votre demande ... &#128533;</p>
+        ) : (
+            searchResult.map((result) => (
+                <div key={result._id}>
                     <OilSummary oilInfo={result} />
                 </div>
-            ))}
+            ))
+        )}
         </div>
         </>
     );
