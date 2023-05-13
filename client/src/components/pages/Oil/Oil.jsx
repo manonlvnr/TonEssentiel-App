@@ -8,6 +8,12 @@ import { IconPlus, IconMinus, IconHeart, IconHeartFilled } from "@tabler/icons-r
 import OilSummary from "../../molecules/OilSummary/OilSummary";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Header from "../../organisms/Header/Header";
+import bain from '../../../icons/bain.png';
+import diffusion from '../../../icons/diffusion.png';
+import massage from '../../../icons/massage.png';
+import oral from '../../../icons/voie-orale.png';
+import cosmetique from '../../../icons/cosmétique.png';
+import inhalation from '../../../icons/inhalation.png';
 
 
 function Oil() {
@@ -117,94 +123,111 @@ function Oil() {
     return (
         <>
         <Header />
-        <div className="oil__wrapper">
+        <div>
             {oil && oil.map((oil) => (
                 <div key={oil._id}>
                     <Title children={oil.name} />
-                    <div className="oil__top-info">
-                        <img
-                            src={oil.image}
-                            alt={oil.name}
-                            className="oil__top-info__img"
-                        />
-                        <div className="oil__top-info__description">
-                            <h3 className="oil__top-info__description__title">
-                                Description :
-                            </h3>
-                            {parse(oil.description)}
-                        </div>
-                    </div>
-                    <div className="oil__main-info">
-                        <h3 className="oil__main-info__title">Utile pour :</h3>
-                        {oil && oil.symptoms.map((symptom, index) => (
-                            <div key={symptom.name} className="oil__accordion">
-                                <li
-                                    className={`oil__accordion__item ${
-                                        opened[index] ? "active" : ""
-                                    }`}
-                                >
-                                    <button
-                                        className="item__btn"
-                                        onClick={() => handleToggle(index)}
-                                    >
-                                        <div>{symptom.name}</div>
-                                        <span className="item__control">
-                                            {opened[index] ? (
-                                                <IconMinus />
-                                            ) : (
-                                                <IconPlus />
-                                            )}
-                                        </span>
-                                    </button>
-                                    {symptom && symptom.diffusions.map((diffusion) => (
-                                        <div>
-                                            <div
-                                                key={diffusion.name}
-                                                className={`item__content ${
-                                                    opened[index] ? "open" : ""
-                                                }`}
-                                            >
-                                                <p>{diffusion.name}</p>
-                                                {diffusion.descriptionAlone !==
-                                                null ? (
-                                                    <p>
-                                                        {
-                                                            diffusion.descriptionAlone
-                                                        }
-                                                    </p>
-                                                ) : null}
-                                                {diffusion.descriptionWithOthers !==
-                                                null ? (
-                                                    <p>
-                                                        {
-                                                            diffusion.descriptionWithOthers
-                                                        }
-                                                    </p>
-                                                ) : null}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </li>
+                    <div className="oil__wrapper">
+                        <div className="oil__top-info">
+                            <img
+                                src={oil.image}
+                                alt={oil.name}
+                                className="oil__top-info__img"
+                            />
+                            <div className="oil__top-info__description">
+                                <h3 className="oil__top-info__description__title">
+                                    Description :
+                                </h3>
+                                {parse(oil.description)}
                             </div>
-                        ))}
-                    </div>
-                    <div className="oil__bottom-info">
-                        {oil.OilsAssociated.length ? (
-                            <>
-                                <h3 className="oil__bottom-info__title">Huiles associées :</h3>
-                                <Swiper slidesPerView={"auto"} spaceBetween={8}>
-                                    {oil.OilsAssociated.map((associated) => (
-                                        <SwiperSlide key={associated._id}>
-                                            <Link to={`/allOils/${associated.name}`} key={associated._id}>
-                                                <OilSummary oilInfo={associated} />
-                                            </Link>
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            </>
-                        ) : (
-                            <></>
-                        )}
+                        </div>
+                        <div className="oil__main-info">
+                            <h3 className="oil__main-info__title">Utile pour :</h3>
+                            {oil && oil.symptoms.map((symptom, index) => (
+                                <div key={symptom.name} className="oil__accordion">
+                                    <li
+                                        className={`oil__accordion__item ${
+                                            opened[index] ? "active" : ""
+                                        }`}
+                                    >
+                                        <button
+                                            className="item__btn"
+                                            onClick={() => handleToggle(index)}
+                                        >
+                                            <div>{symptom.name}</div>
+                                            <span className="item__control">
+                                                {opened[index] ? (
+                                                    <IconMinus />
+                                                ) : (
+                                                    <IconPlus />
+                                                )}
+                                            </span>
+                                        </button>
+                                        {symptom && symptom.diffusions.map((diffusion) => (
+                                                <div key={diffusion.name} className={`item__content ${ opened[index] ? "open" : ""}`} >
+                                                    <p className="item__content__name">
+                                                        <div>
+                                                            {(() => {
+                                                                    switch (diffusion.name) {
+                                                                    case 'bain':
+                                                                        return <img src={bain} alt="bain" />;
+                                                                    case 'diffusion':
+                                                                        return <img src={diffusion} alt="diffusion" />;
+                                                                    case 'massage':
+                                                                        return <img src={massage} alt="massage" />;
+                                                                    case 'voie orale':
+                                                                        return <img src={oral} alt="voie orale" />;
+                                                                    case 'cosmétique':
+                                                                        return <img src={cosmetique} alt="cosmétique" />;
+                                                                    case 'inhalation':
+                                                                        return <img src={inhalation} alt="inhalation" />;
+                                                                    default:
+                                                                        return null;
+                                                                    }
+                                                                })()}
+                                                        </div>
+                                                        {diffusion.name}
+                                                    </p>
+                                                    {diffusion.descriptionAlone !==
+                                                    null ? (
+                                                        <p className="item__content__description">
+                                                            {
+                                                                diffusion.descriptionAlone
+                                                            }
+                                                        </p>
+                                                    ) : null}
+                                                    {diffusion.descriptionWithOthers !==
+                                                    null ? (
+                                                        <p className="item__content__description">
+                                                            {
+                                                                diffusion.descriptionWithOthers
+                                                            }
+                                                        </p>
+                                                    ) : null}
+                                            </div>
+                                        ))}
+                                    </li>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="oil__bottom-info">
+                            {oil.OilsAssociated.length ? (
+                                <>
+                                    <h3 className="oil__bottom-info__title">Huiles associées :</h3>
+                                    <Swiper slidesPerView={"auto"} spaceBetween={8}>
+                                        {oil.OilsAssociated.map((associated) => (
+                                            <SwiperSlide key={associated._id}>
+                                                <Link to={`/allOils/${associated.name}`} key={associated._id}>
+                                                    <OilSummary oilInfo={associated} />
+                                                </Link>
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </>
+                            ) : (
+                                <></>
+                            )}
+                        </div>
                     </div>
                 </div>
             ))}

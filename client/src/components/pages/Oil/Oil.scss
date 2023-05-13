@@ -4,18 +4,19 @@
 // Oil page
 // -----------------------------------------------------------------------------
 .oil__wrapper {
-    margin-bottom: calc(var(--space-xl)*2);
+    margin-bottom: calc(var(--space-xl) * 2.5);
     padding-inline: var(--space-md);
 }
 
 // Top info
 // -----------------------------------------------------------------------------
 .oil__top-info {
-    gap: var(--space-md);
+    margin-bottom: var(--space-md);
 }
 
 .oil__top-info__description__title {
-    font-size: calc(var(--text-sm));
+    color: var(--color-text);
+    font-size: calc(var(--text-md));
     margin-block: var(--space-sm);
 }
 .oil__top-info__description {
@@ -44,11 +45,12 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    top: 20rem;
-    left: 8rem;
+    top: 17.5rem;
+    left: 8.5rem;
     color: var(--color-tertiary);
     background-color: var(--color-primary);
     border-radius: 4px;
+    padding: var(--space-xs);
 }
 
 // Main info
@@ -59,6 +61,22 @@
     &.open {
         display: block;
         height: auto;
+        background-color: var(--bg-color);
+        padding: var(--space-md);
+    }
+    
+
+    .item__content__name {
+        display: flex;
+        color: var(--color-text);
+        margin-block: 0 var(--space-sm);
+        gap: var(--space-sm);
+    }
+
+    .item__content__description {
+        margin-block: var(--space-sm);
+        color: var(--color-text);
+        font-size: calc(var(--text-xs));
     }
 }
 
@@ -73,13 +91,27 @@
     }
     
     .oil__main-info__title {
-        font-size: calc(var(--text-sm));
+        font-size: calc(var(--text-md));
         margin-block: var(--space-sm);
+        color: var(--color-text);
     }
 }
 
-
 .oil__accordion__item {
+    
+    > .item__content:not(:last-child)  {
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 80%;
+            height: 1px;
+            left: 10%;
+            background-color: var(--color-primary);
+            margin-block: var(--space-sm);
+        }
+    }
+
     .item__btn {
         @include reset-button;
 
@@ -87,11 +119,24 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: var(--color-contrast);
-        background-color: var(--color-primary);
+        color: var(--color-text);
+        background-color: var(--color-secondary);
         border-radius: 4px;
+        font-size: var(--text-sm);
+        padding-block: var(--space-sm);
+        text-transform : capitalize;
     }
 }
 
 // Bottom info
 // -----------------------------------------------------------------------------
+
+.oil__bottom-info {
+    display: block;
+}
+
+.oil__bottom-info__title {
+    color: var(--color-text);
+    font-size: calc(var(--text-md));
+    margin-block: var(--space-sm);
+}

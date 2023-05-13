@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Header from "../../organisms/Header/Header";
 import Title from "../../atoms/Title/Title";
@@ -31,15 +31,15 @@ function SearchResult() {
     return (
         <>
         <Header />
-        <Title children={"Résultat de recherche"} />
+        <Title children={`${searchState}`} />
         <div className="search-result__wrapper">
         {searchResult.length === 0 ? (
             <p>Aucun résultat ne correspondant à votre demande ... &#128533;</p>
         ) : (
             searchResult.map((result) => (
-                <div key={result._id}>
+                <Link to={`/allOils/${result.name}`} key={result._id}>
                     <OilSummary oilInfo={result} />
-                </div>
+                </Link>
             ))
         )}
         </div>

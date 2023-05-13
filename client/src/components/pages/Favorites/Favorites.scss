@@ -12,6 +12,15 @@
     display: flex;
     align-items: center;
     gap: var(--space-md);
+
+    a {
+        @include reset-link;
+        width: 100%;
+
+        .card__body__name {
+            font-size: var(--text-sm)
+        }
+    }
 }
 
 .favorites__delete-btn {

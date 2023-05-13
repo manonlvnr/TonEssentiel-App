@@ -2,7 +2,7 @@ import Title from '../../atoms/Title/Title';
 import Categories from '../../molecules/Categories/Categories';
 import Header from "../../organisms/Header/Header";
 
-const themesCategories = [{name: "Beauté", path: "/themes/beaute"}, {name: "Bien-être", path: "/themes/bien-etre"}, {name: "Cuisine", path: "/themes/cuisine"}, {name: "Maison", path: "/themes/maison"}, {name: "Parfum", path: "/themes/parfum"}, {name: "Santé", path: "/themes/sante"}]
+const themesCategories = [{name: "Beauté", path: "/themes/beauté"}, {name: "Bien-être", path: "/themes/bien-être"}, {name: "Cuisine", path: "/themes/cuisine"}, {name: "Maison", path: "/themes/maison"}, {name: "Parfum", path: "/themes/parfum"}, {name: "Santé", path: "/themes/santé"}]
 
 function ThemesList() {
     return (
