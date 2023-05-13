@@ -5,6 +5,8 @@ import Title from "../../atoms/Title/Title";
 import './DiffusionsResult.scss'
 import Sheet from 'react-modal-sheet';
 import Header from "../../organisms/Header/Header";
+import { IconSquareRoundedXFilled } from "@tabler/icons-react";
+import FilterButton from "../../atoms/FilterButton/FilterButton";
 
 
 
@@ -80,27 +82,41 @@ function DiffusionsResult() {
                         <OilSummary oilInfo={oil}/>
                     </Link>
                 ))}
-            <button onClick={() => setOpen(true)}>Open sheet</button>
+            <FilterButton onClick={() => setOpen(true)} />
 
             <Sheet isOpen={isOpen} onClose={() => setOpen(false)} >
             <Sheet.Container>
                 <Sheet.Header />
                 <Sheet.Content>
-                    <div>
-                        <form type="submit" onSubmit={handleFilter}>
-                            <label for="theme">Thème :</label>
-                            <input type="checkbox" id="beauté" name="beauté" value="beauté" />
+                    <div style={{ height: 630 }} className="diffusion-results__filters">
+                        <IconSquareRoundedXFilled size={32} stroke={1.5} onClick={() => setOpen(false)} aria-controls="close" className="themes-results__close-btn"/>
+                        <h2 className="diffusion-results__filters__title">Themes :</h2>
+                        <form type="submit" onSubmit={handleFilter} className="diffusion-results__filters__form">
+                        <div className="diffusion-results__filters__item">
                             <label for="beauté">Beauté</label>
-                            <input type="checkbox" id="bien-être" name="bien-être" value="bien-être" />
+                            <input type="checkbox" id="beauté" name="beauté" value="beauté" />
+                        </div>
+                        <div className="diffusion-results__filters__item">
                             <label for="bien-être">Bien-être</label>
-                            <input type="checkbox" id="cuisine" name="cuisine" value="cuisine" />
+                            <input type="checkbox" id="bien-être" name="bien-être" value="bien-être" />
+                        </div>
+                        <div className="diffusion-results__filters__item">
                             <label for="cuisine">Cuisine</label>
-                            <input type="checkbox" id="maison" name="maison" value="maison" />
+                            <input type="checkbox" id="cuisine" name="cuisine" value="cuisine" />
+                        </div>
+                        <div className="diffusion-results__filters__item">
                             <label for="maison">Maison</label>
-                            <input type="checkbox" id="parfum" name="parfum" value="parfum" />
+                            <input type="checkbox" id="maison" name="maison" value="maison" />
+                        </div>
+                        <div className="diffusion-results__filters__item">
                             <label for="parfum">Parfum</label>
-                            <input type="checkbox" id="santé" name="santé" value="santé" />
+                            <input type="checkbox" id="parfum" name="parfum" value="parfum" />
+                        </div>
+                        <div className="diffusion-results__filters__item">
                             <label for="santé">Santé</label>
+                            <input type="checkbox" id="santé" name="santé" value="santé" />
+                        </div>
+
                             <button type="submit">Filtrer</button>
                         </form>
                     </div>

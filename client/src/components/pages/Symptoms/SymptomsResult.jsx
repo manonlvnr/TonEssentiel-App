@@ -5,6 +5,7 @@ import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Title from "../../atoms/Title/Title";
 import Sheet from "react-modal-sheet";
 import Header from "../../organisms/Header/Header";
+import FilterButton from "../../atoms/FilterButton/FilterButton";
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -77,7 +78,7 @@ function SymptomsResult() {
                         <OilSummary oilInfo={oil} />
                     </Link>
                 ))}
-                <button onClick={() => setOpen(true)}>Open sheet</button>
+                <FilterButton onClick={() => setOpen(true)} />
 
                 <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
                     <Sheet.Container>

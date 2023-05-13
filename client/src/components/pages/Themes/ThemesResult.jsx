@@ -5,7 +5,8 @@ import Title from '../../atoms/Title/Title'
 import './ThemesResult.scss';
 import Sheet from 'react-modal-sheet';
 import Header from "../../organisms/Header/Header";
-
+import { IconSquareRoundedXFilled } from "@tabler/icons-react";
+import FilterButton from "../../atoms/FilterButton/FilterButton";
 
 function ThemesResult() {
     const routeParams = useParams();
@@ -53,6 +54,7 @@ function ThemesResult() {
                 })
             })
             setThemes(filteredthemes)
+            setOpen(false);
         } else {
             setThemes(json);
         }
@@ -70,27 +72,42 @@ function ThemesResult() {
                             <OilSummary oilInfo={oil}/>
                         </Link>
                     ))}
-                <button onClick={() => setOpen(true)}>Open sheet</button>
 
-                <Sheet isOpen={isOpen} onClose={() => setOpen(false)} >
+                <FilterButton onClick={() => setOpen(true)} />
+
+                <Sheet isOpen={isOpen} onClose={() => setOpen(false)} detent='content-height'>
                 <Sheet.Container>
                     <Sheet.Header />
                     <Sheet.Content>
-                        <div>
-                            <form type="submit" onSubmit={handleFilter}>
-                                <label for="diffusions">Diffusions :</label>
-                                <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" />
-                                <label for="voie orale">Voie orale</label>
-                                <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" />
-                                <label for="diffusion">Diffusion</label>
-                                <input type="checkbox" id="massage" name="massage" value="massage" />
-                                <label for="massage">Massage</label>
-                                <input type="checkbox" id="bain" name="bain" value="bain" />
-                                <label for="bain">Bain</label>
-                                <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" />
-                                <label for="cosmétique">Cosmétique</label>
-                                <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" />
-                                <label for="inhalation">Inhalation</label>
+                        <div style={{ height: 630 }} className="themes-results__filters">
+                            <IconSquareRoundedXFilled size={32} stroke={1.5} onClick={() => setOpen(false)} aria-controls="close" className="themes-results__close-btn"/>
+                            <h2 className="themes-results__filters__title">Diffusions :</h2>
+                            <form type="submit" onSubmit={handleFilter} className="themes-results__filters__form">
+                                <div className="themes-results__filters__item">
+                                    <label for="voie orale">Voie orale</label>
+                                    <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" />
+                                </div>
+                                <div className="themes-results__filters__item">
+                                    <label for="diffusion">Diffusion</label>
+                                    <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" />
+                                </div>
+                                <div className="themes-results__filters__item">
+                                    <label for="massage">Massage</label>
+                                    <input type="checkbox" id="massage" name="massage" value="massage" />
+                                </div>
+                                <div className="themes-results__filters__item">
+                                    <label for="bain">Bain</label>
+                                    <input type="checkbox" id="bain" name="bain" value="bain" />
+                                </div>
+                                <div className="themes-results__filters__item">
+                                    <label for="cosmétique">Cosmétique</label>
+                                    <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" />
+                                </div>
+                                <div className="themes-results__filters__item">
+                                    <label for="inhalation">Inhalation</label>
+                                    <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" />
+                                </div>
+
                                 <button type="submit">Filtrer</button>
                             </form>
                         </div>

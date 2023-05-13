@@ -1,6 +1,91 @@
+@import '../../../Reset.scss';
+
 .diffusion-results__wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
     padding: var(--space-lg) var(--space-md) var(--space-2xl) var(--space-md);
+
+    a {
+        @include reset-link;
+    }
+}
+
+.diffusion-results__filters {
+    padding: var(--space-lg) var(--space-md) var(--space-2xl) var(--space-md);
+}
+
+.diffusion-results__filters__title {
+    color: var(--color-text);
+    font-size: var(--text-lg);
+}
+
+.diffusion-results__filters__form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    
+    label {
+        color: var(--color-text);
+        font-size: var(--text-sm);
+    }
+
+    input {
+        position: relative;
+        width: 3rem;
+        height: 1.5rem;
+        padding: var(--space-sm);
+        border-radius: 0.5rem;
+        box-shadow: var(--inner-shadow);
+        background-color: var(--bg-color);
+        border: none;
+        appearance: none;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            top: 0.3rem;
+            left: 0.3rem;
+            border-radius: 50%;
+            background-color: var(--color-text);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        &:checked {
+            background-color: var(--color-primary);
+
+            &::after {
+                transform: translateX(1.5rem);
+            }
+        }
+    }
+    
+    button {
+        @include reset-button;
+        
+        width: fit-content;
+        align-self: flex-end;
+        padding: var(--space-md);
+        font-size: var(--text-md);
+        background-color: var(--color-secondary);
+        box-shadow: var(--box-shadow);
+        border-radius: .5rem;
+        margin-top: var(--space-xl);
+    }
+}
+
+.diffusion-results__filters__item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.diffusion-results__close-btn {
+    float: right;
+    color: var(--color-primary);
 }
