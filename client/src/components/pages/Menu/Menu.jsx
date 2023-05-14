@@ -34,7 +34,7 @@ function Menu() {
                 <div>Mon compte</div>
             </Link>
             <div to="/faq" className="menu__infos">
-                <Link className="menu__infos__link">
+                <Link to="/faq" className="menu__infos__link">
                     <IconHelpOctagon />
                     <div>FAQ</div>
                 </Link>

@@ -1,0 +1,44 @@
+.toggle-mode {
+    display: flex;
+    gap: var(--space-lg);
+    color: var(--color-text);
+    
+    label {
+        color: var(--color-text);
+        font-size: var(--text-md);
+    }
+
+    input {
+        position: relative;
+        width: 3rem;
+        height: 1.5rem;
+        padding: var(--space-sm);
+        border-radius: 0.5rem;
+        box-shadow: var(--inner-shadow);
+        background-color: var(--bg-color);
+        border: none;
+        appearance: none;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            top: 0.3rem;
+            left: 0.3rem;
+            border-radius: 50%;
+            background-color: var(--color-text);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        &:checked {
+            background-color: var(--color-primary);
+
+            &::after {
+                transform: translateX(1.5rem);
+            }
+        }
+    }
+}

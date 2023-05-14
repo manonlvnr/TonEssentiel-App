@@ -32,7 +32,7 @@ function AllOils() {
         <div>
             <Header />
             <Title children={"Huiles de A à Z"} />
-            <div>
+            <div className='allOils__wrapper'>
                 <AlphabeticalList words={allOils} link="allOils"/>
             </div>
         </div>

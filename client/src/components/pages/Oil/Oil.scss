@@ -24,6 +24,7 @@
         @include reset-list;
 
         font-size: calc(var(--text-xxs));
+        color: var(--color-text);
         margin-bottom: var(--space-xs);
     }
 }

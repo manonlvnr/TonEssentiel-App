@@ -15,7 +15,7 @@ function Search() {
         <div className="search">
             <input type="text" className="search__input" placeholder="Rechercher un symptôme, une huile ..." onChange={(e) => setSearchState(e.target.value)}/>
             <button className="search__button" onClick={handleSearch}>
-                <IconSearch color="#1D6D1D" size={24} />
+                <IconSearch size={24} />
             </button>
         </div>
     )

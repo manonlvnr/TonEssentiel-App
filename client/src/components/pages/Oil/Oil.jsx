@@ -9,7 +9,7 @@ import OilSummary from "../../molecules/OilSummary/OilSummary";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Header from "../../organisms/Header/Header";
 import bain from '../../../icons/bain.png';
-import diffusion from '../../../icons/diffusion.png';
+import diff from '../../../icons/diffusion.png';
 import massage from '../../../icons/massage.png';
 import oral from '../../../icons/voie-orale.png';
 import cosmetique from '../../../icons/cosmétique.png';
@@ -172,7 +172,7 @@ function Oil() {
                                                                     case 'bain':
                                                                         return <img src={bain} alt="bain" />;
                                                                     case 'diffusion':
-                                                                        return <img src={diffusion} alt="diffusion" />;
+                                                                        return <img src={diff} alt="diffusion" />;
                                                                     case 'massage':
                                                                         return <img src={massage} alt="massage" />;
                                                                     case 'voie orale':

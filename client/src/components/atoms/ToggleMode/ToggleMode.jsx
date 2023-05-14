@@ -1,6 +1,6 @@
 
 import { useToggleModeContext } from "../../../hooks/useToggleModeContext";
-
+import "./ToggleMode.scss";
 
 function ToggleMode() {
     const { darkMode, dispatch } = useToggleModeContext();
@@ -18,9 +18,8 @@ function ToggleMode() {
 
     return (
         <div className="toggle-mode">
-            <label htmlFor="toggle-mode">
-                <input type="checkbox" id="toggle-mode" checked={darkMode ? true : false} onChange={handleSwitch} />
-            </label>
+            <label htmlFor="toggle-mode">Thème sombre</label>
+            <input type="checkbox" id="toggle-mode" checked={darkMode ? true : false} onChange={handleSwitch} />
         </div>
     );
 }
