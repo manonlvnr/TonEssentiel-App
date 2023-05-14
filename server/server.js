@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const helmet = require('helmet');
 require("dotenv").config();
 const http = require('http');
 const port = process.env.PORT || 5001;
@@ -8,6 +9,7 @@ const mongoose = require('mongoose');
 
 //middleware
 app.use(express.json());
+app.use(helmet());
 app.use(cors());
 
 // Main API's path
