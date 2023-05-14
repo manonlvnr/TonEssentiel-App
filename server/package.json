@@ -2,12 +2,12 @@
   "name": "ton-essentiel-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "author": "Manon Lavenier",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect server.js"
+    "start": "nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
