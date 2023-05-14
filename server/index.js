@@ -11,13 +11,15 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(helmet());
 
-// Définir les options CORS pour votre API spécifique
-const corsOptions = {
-    origin: 'https://ton-essentiel.vercel.app',
-    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// // Définir les options CORS pour votre API spécifique
+// const corsOptions = {
+//     origin: 'https://ton-essentiel.vercel.app',
+//     optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(cors());
 
 // Main API's path
 // Oils routes
