@@ -3,6 +3,7 @@ import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList"
 import Title from "../../atoms/Title/Title";
 import Header from "../../organisms/Header/Header";
 import { useEffect, useState } from "react";
+import API_URL from "../../../config";
 
 
 function SymptomsList() {
@@ -11,7 +12,7 @@ function SymptomsList() {
 
     useEffect(() => {
         const fetchOils = async () => {
-            const response = await fetch("/api/oils");
+            const response = await fetch(`${API_URL}/api/oils`);
             const json = await response.json();
 
             if (response.ok) {

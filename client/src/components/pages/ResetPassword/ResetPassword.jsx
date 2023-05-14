@@ -6,6 +6,7 @@ import "./ResetPassword.scss";
 import Title from "../../atoms/Title/Title";
 import Input from "../../atoms/Input/Input";
 import Label from "../../atoms/Label/Label";
+import API_URL from "../../../config";
 
 function ResetPassword() {
     const [newPassword, setNewPassword] = useState("");
@@ -17,7 +18,7 @@ function ResetPassword() {
         e.preventDefault();
         
         const sendResetEmail = async () => {
-        const response = await fetch(`/api/users/reset-password/${routeParams.id}/${routeParams.token}`, 
+        const response = await fetch(`${API_URL}/api/users/reset-password/${routeParams.id}/${routeParams.token}`, 
         {
             method: "PUT",
             headers: {

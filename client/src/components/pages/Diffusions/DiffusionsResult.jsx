@@ -7,6 +7,7 @@ import Sheet from 'react-modal-sheet';
 import Header from "../../organisms/Header/Header";
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
+import API_URL from "../../../config";
 
 
 
@@ -22,7 +23,7 @@ function DiffusionsResult() {
 
     useEffect(() => {
         const fetchDiffusions = async () => {
-        const response = await fetch(`/api/oils/diffusions/${routeParams.name}`);
+        const response = await fetch(`$${API_URL}/api/oils/diffusions/${routeParams.name}`);
         const json = await response.json();
 
             if (response.ok) {

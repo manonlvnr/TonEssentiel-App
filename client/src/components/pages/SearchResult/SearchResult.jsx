@@ -4,6 +4,7 @@ import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Header from "../../organisms/Header/Header";
 import Title from "../../atoms/Title/Title";
 import "./SearchResult.scss";
+import API_URL from "../../../config";
 
 function SearchResult() {
     // const [searchParams, setSearchParams] = useSearchParams()
@@ -14,7 +15,7 @@ function SearchResult() {
 
     useEffect(() => {
         const fetchSearch = async () => {
-            const response = await fetch(`/api/oils/search?keyword=${searchState}`);
+            const response = await fetch(`$${API_URL}/api/oils/search?keyword=${searchState}`);
             const json = await response.json();
 
             if (response.ok) {

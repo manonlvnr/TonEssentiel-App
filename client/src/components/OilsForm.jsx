@@ -1,4 +1,5 @@
 import { useState } from "react"
+import API_URL from "../config"
 
 function OilsForm() {
     const [name, setName] = useState('')
@@ -19,7 +20,7 @@ function OilsForm() {
             highlight
         }
 
-        const response = await fetch('api/oils', {
+        const response = await fetch(`${API_URL}/api/oils`, {
             method: 'POST',
             body: JSON.stringify(oil),
             headers: {

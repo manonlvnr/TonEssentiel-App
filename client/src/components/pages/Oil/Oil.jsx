@@ -14,6 +14,7 @@ import massage from '../../../icons/massage.png';
 import oral from '../../../icons/voie-orale.png';
 import cosmetique from '../../../icons/cosmétique.png';
 import inhalation from '../../../icons/inhalation.png';
+import API_URL from "../../../config";
 
 
 function Oil() {
@@ -29,7 +30,7 @@ function Oil() {
 
     useEffect(() => {
         const fetchOil = async () => {
-            const response = await fetch(`/api/oils/names/${routeParams.oil}`);
+            const response = await fetch(`$${API_URL}/api/oils/names/${routeParams.oil}`);
             const json = await response.json();
 
             if (response.ok) {

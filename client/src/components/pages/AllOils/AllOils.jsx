@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
 import Title from '../../atoms/Title/Title';
 import Header from "../../organisms/Header/Header";
+import API_URL from '../../../config';
 
 function AllOils() {
     const [oils, setOils] = useState(null);
@@ -10,7 +11,7 @@ function AllOils() {
 
     useEffect(() => {
         const fetchOils = async () => {
-            const response = await fetch('/api/oils');
+            const response = await fetch(`${API_URL}/api/oils`);
             const json = await response.json();
 
             if(response.ok) {

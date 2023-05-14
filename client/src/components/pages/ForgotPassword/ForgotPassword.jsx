@@ -5,6 +5,7 @@ import "./ForgotPassword.scss";
 import Title from "../../atoms/Title/Title";
 import Input from "../../atoms/Input/Input";
 import Label from "../../atoms/Label/Label";
+import API_URL from "../../../config";
 
 function ForgotPassword() {
     const [email, setEmail] = useState();
@@ -13,7 +14,7 @@ function ForgotPassword() {
         e.preventDefault();
         
         const sendResetEmail = async () => {
-        const response = await fetch(`/api/users/reset-password`, 
+        const response = await fetch(`$${API_URL}/api/users/reset-password`, 
         {
             method: "POST",
             headers: {

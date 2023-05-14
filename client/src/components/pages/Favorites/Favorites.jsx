@@ -6,6 +6,7 @@ import './Favorites.scss';
 import Header from "../../organisms/Header/Header";
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import API_URL from '../../../config';
 
 
 function Favorites() {
@@ -16,7 +17,7 @@ function Favorites() {
             const localInfo = localStorage.getItem("user");
             const email = JSON.parse(localInfo).email;
 
-            const response = await fetch(`/api/users/${email}`);
+            const response = await fetch(`$${API_URL}/api/users/${email}`);
             const json = await response.json();
 
             if (response.ok) {

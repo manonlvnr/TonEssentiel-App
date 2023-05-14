@@ -8,6 +8,7 @@ import Title from "../../atoms/Title/Title";
 import Input from "../../atoms/Input/Input";
 import { IconDeviceFloppy, IconPower } from "@tabler/icons-react";
 import { Toaster } from 'react-hot-toast';
+import API_URL from "../../../config";
 
 function Account() {
     const [userName, setUserName] = useState("");
@@ -28,7 +29,7 @@ function Account() {
             const localInfo = localStorage.getItem("user");
             const email = JSON.parse(localInfo).email;
 
-            const response = await fetch(`/api/users/${email}`);
+            const response = await fetch(`${API_URL}/api/users/${email}`);
             const json = await response.json();
 
             if (response.ok) {

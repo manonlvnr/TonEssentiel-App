@@ -7,6 +7,7 @@ import Sheet from 'react-modal-sheet';
 import Header from "../../organisms/Header/Header";
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
+import API_URL from "../../../config";
 
 function ThemesResult() {
     const routeParams = useParams();
@@ -17,7 +18,7 @@ function ThemesResult() {
 
     useEffect(() => {
         const fetchThemes = async () => {
-        const response = await fetch(`/api/oils/themes/${routeParams.theme}`);
+        const response = await fetch(`$${API_URL}/api/oils/themes/${routeParams.theme}`);
         const json = await response.json();
 
             if (response.ok) {

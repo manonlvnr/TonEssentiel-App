@@ -6,6 +6,7 @@ import Title from "../../atoms/Title/Title";
 import Sheet from "react-modal-sheet";
 import Header from "../../organisms/Header/Header";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
+import API_URL from '../../../config';
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -16,7 +17,7 @@ function SymptomsResult() {
     useEffect(() => {
         const fetchSymptoms = async () => {
             const response = await fetch(
-                `/api/oils/symptoms/${routeParams.name}`
+                `${API_URL}/api/oils/symptoms/${routeParams.name}`
             );
             const json = await response.json();
 
