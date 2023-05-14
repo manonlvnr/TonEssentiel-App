@@ -15,7 +15,7 @@ function SearchResult() {
 
     useEffect(() => {
         const fetchSearch = async () => {
-            const response = await fetch(`$${API_URL}/api/oils/search?keyword=${searchState}`);
+            const response = await fetch(`${API_URL}/api/oils/search?keyword=${searchState}`);
             const json = await response.json();
 
             if (response.ok) {

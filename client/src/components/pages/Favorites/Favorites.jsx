@@ -17,7 +17,7 @@ function Favorites() {
             const localInfo = localStorage.getItem("user");
             const email = JSON.parse(localInfo).email;
 
-            const response = await fetch(`$${API_URL}/api/users/${email}`);
+            const response = await fetch(`${API_URL}/api/users/${email}`);
             const json = await response.json();
 
             if (response.ok) {

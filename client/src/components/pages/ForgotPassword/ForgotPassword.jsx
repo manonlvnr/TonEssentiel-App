@@ -14,7 +14,7 @@ function ForgotPassword() {
         e.preventDefault();
         
         const sendResetEmail = async () => {
-        const response = await fetch(`$${API_URL}/api/users/reset-password`, 
+        const response = await fetch(`${API_URL}/api/users/reset-password`, 
         {
             method: "POST",
             headers: {

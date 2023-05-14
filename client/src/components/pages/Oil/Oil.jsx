@@ -30,7 +30,7 @@ function Oil() {
 
     useEffect(() => {
         const fetchOil = async () => {
-            const response = await fetch(`$${API_URL}/api/oils/names/${routeParams.oil}`);
+            const response = await fetch(`${API_URL}/api/oils/names/${routeParams.oil}`);
             const json = await response.json();
 
             if (response.ok) {
@@ -45,7 +45,7 @@ function Oil() {
                 const email = JSON.parse(localInfo).email;
                 // console.log(email);
 
-                const response = await fetch(`/api/users/${email}`);
+                const response = await fetch(`${API_URL}/api/users/${email}`);
                 const json = await response.json();
 
                 if (response.ok) {
