@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import toast from 'react-hot-toast';
+import API_URL from "../config";
 
 export const useUpdateProfile = () => {
     const [error, setError] = useState(null);
@@ -13,7 +14,7 @@ export const useUpdateProfile = () => {
         const localInfo = localStorage.getItem("user");
             const actualEmail = JSON.parse(localInfo).email;
 
-        const response = await fetch(`/api/users/profile/${actualEmail}`, {
+        const response = await fetch(`${API_URL}/api/users/profile/${actualEmail}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
