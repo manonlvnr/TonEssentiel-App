@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router()
 const { getAllOils, getOneOilByName, getOilBySymptom, getOilByTheme, getOilByDiffusion, searchOilByKeyword } = require('../controllers/oilsController');
