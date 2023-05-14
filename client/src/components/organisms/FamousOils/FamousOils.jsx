@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import './FamousOils.scss'
 import { Link } from 'react-router-dom';
 import OilSummary from '../../molecules/OilSummary/OilSummary';
+import API_URL from '../../../config';
 
 function FamousOils() {
     const [oils, setOils] = useState(null);
 
     useEffect(() => {
         const fetchOils = async () => {
-            const response = await fetch('/api/oils');
+            const response = await fetch(`${API_URL}/api/oils`);
             const json = await response.json();
 
             if(response.ok) {
