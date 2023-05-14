@@ -17,23 +17,27 @@ function AlphabeticalList({ words, link }) {
     }, {});
 
     const scrollToLetter = letter => {
-        const letterIndex = letterPositions[letter];
-        if (letterIndex !== undefined) {
-            const listItem = wordListRef.current.children[letterIndex];
-            listItem.scrollIntoView({ behavior: 'smooth' });
+        const firstLetterElement = wordListRef.current.querySelector(`[data-letter="${letter}"]`);
+        if (firstLetterElement) {
+            firstLetterElement.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     return (
         <div className='list'>
             <ul ref={wordListRef} className='list__words'>
-                {words.sort().map(word => (
-                    <li className='list__word'>
-                        <Link key={word} to={`/${link}/${word}`} className='list__word__link'>
-                            {word}
-                            <IconChevronRight/>
-                        </Link>
-                    </li>
+                {Object.keys(letterPositions).map(letter => (
+                    <div key={letter} className='list__words__group'>
+                        <span className='list__words__group__letter'>{letter}</span>
+                            {words.filter(word => word[0] === letter).sort().map(word => (
+                                <li className='list__word' key={word} data-letter={letter}>
+                                    <Link key={word} to={`/${link}/${word}`} className='list__word__link'>
+                                        {word}
+                                        <IconChevronRight/>
+                                    </Link>
+                                </li>
+                            ))}
+                    </div>
                 ))}
             </ul>
             <div className="list__letters">

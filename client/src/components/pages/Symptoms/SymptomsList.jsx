@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 function SymptomsList() {
     const [oils, setOils] = useState(null);
-    const symptoms = [];
+    const [symptoms, setSymptoms] = useState([]);
 
     useEffect(() => {
         const fetchOils = async () => {
@@ -22,11 +22,17 @@ function SymptomsList() {
         fetchOils();
     }, []);
 
-    oils && oils.map(oil => {
-        oil.symptoms && oil.symptoms.map(symptom => {
-            symptoms.push(symptom.name)
-        })
-    })
+    if (!oils) {
+        return <div>Loading...</div>;
+    }
+
+    const uniqueSymptoms = Array.from(
+    new Set(
+        oils
+        .flatMap((oil) => oil.symptoms || [])
+        .map((symptom) => symptom.name)
+    )
+    ).sort();
 
 
     console.log(symptoms);
@@ -36,7 +42,7 @@ function SymptomsList() {
             <div className="symptoms__wrapper">
                 <Title children={"Symptômes"} />
                 <div>
-                    <AlphabeticalList words={symptoms} link="symptoms" />
+                    <AlphabeticalList words={uniqueSymptoms} link="symptoms" />
                 </div>
             </div>
         </>
