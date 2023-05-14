@@ -13,7 +13,7 @@ app.use(helmet());
 
 // Définir les options CORS pour votre API spécifique
 const corsOptions = {
-    origin: 'https://ton-essentiel.vercel.app/',
+    origin: 'https://ton-essentiel.vercel.app',
     optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
