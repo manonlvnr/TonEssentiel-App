@@ -8,7 +8,7 @@ function FamousOils() {
 
     useEffect(() => {
         const fetchOils = async () => {
-            const response = await fetch('/api/oils');
+            const response = await fetch('https://ton-essentiel-api.vercel.app/api/oils');
             const json = await response.json();
 
             if(response.ok) {
