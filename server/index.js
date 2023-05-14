@@ -10,7 +10,14 @@ const mongoose = require('mongoose');
 //middleware
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+
+// Définir les options CORS pour votre API spécifique
+const corsOptions = {
+    origin: 'https://ton-essentiel-api.vercel.app',
+    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 // Main API's path
 // Oils routes
