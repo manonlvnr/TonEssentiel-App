@@ -75,7 +75,7 @@ function Oil() {
 
             const removeFavorites = async () => {
                 const response = await fetch(
-                    `/api/users/favorites/${userState[0].email}`,
+                    `${API_URL}/api/users/favorites/${userState[0].email}`,
                     {
                         method: "DELETE",
                         headers: {
@@ -95,7 +95,7 @@ function Oil() {
 
             const addFavorites = async () => {
                 const response = await fetch(
-                    `/api/users/favorites/${userState[0].email}`,
+                    `${API_URL}/api/users/favorites/${userState[0].email}`,
                     {
                         method: "POST",
                         headers: {
