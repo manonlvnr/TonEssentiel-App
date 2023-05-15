@@ -38,7 +38,7 @@ function ThemesResult() {
 
         console.log(checkedBoxesValues)
 
-        const response = await fetch(`/api/oils/themes/${routeParams.theme}`);
+        const response = await fetch(`${API_URL}/api/oils/themes/${routeParams.theme}`);
         const json = await response.json();
 
         if (response.ok) {

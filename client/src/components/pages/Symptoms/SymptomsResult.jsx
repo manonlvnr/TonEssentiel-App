@@ -41,7 +41,7 @@ function SymptomsResult() {
 
         console.log(checkedBoxesValues);
 
-        const response = await fetch(`/api/oils/symptoms/${routeParams.name}`);
+        const response = await fetch(`${API_URL}/api/oils/symptoms/${routeParams.name}`);
         const json = await response.json();
 
         if (response.ok) {

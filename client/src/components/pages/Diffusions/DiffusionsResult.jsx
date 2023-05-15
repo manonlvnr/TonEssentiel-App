@@ -51,7 +51,7 @@ function DiffusionsResult() {
 
         console.log(checkedBoxesValues)
 
-        const response = await fetch(`/api/oils/diffusions/${routeParams.name}`);
+        const response = await fetch(`${API_URL}/api/oils/diffusions/${routeParams.name}`);
         const json = await response.json();
 
         if (response.ok) {
