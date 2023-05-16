@@ -14,6 +14,7 @@ function ThemesResult() {
 
     const [themes, setThemes] = useState([]);
     const [isOpen, setOpen] = useState(false);
+    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
 
     useEffect(() => {
@@ -30,13 +31,22 @@ function ThemesResult() {
         fetchThemes();
     }, [ routeParams.theme ]);
 
+    const handleCheckboxChange = (e) => {
+        const checkboxValue = e.target.value;
+        if (e.target.checked) {
+            setSelectedCheckboxes((prevSelectedCheckboxes) => [
+                ...prevSelectedCheckboxes,
+                checkboxValue,
+            ]);
+            } else {
+            setSelectedCheckboxes((prevSelectedCheckboxes) =>
+                prevSelectedCheckboxes.filter((value) => value !== checkboxValue)
+            );
+        }
+    };
+
     const handleFilter = async (e) => {
         e.preventDefault();
-
-        const checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-        const checkedBoxesValues = Array.from(checkedBoxes).map(cb => cb.value);
-
-        console.log(checkedBoxesValues)
 
         const response = await fetch(`${API_URL}/api/oils/themes/${routeParams.theme}`);
         const json = await response.json();
@@ -46,11 +56,11 @@ function ThemesResult() {
             console.log("diffusion", json);
         }
 
-        if(checkedBoxesValues.length > 0) {
+        if(selectedCheckboxes.length > 0) {
             const filteredthemes = themes.filter((oil) => {
                 return oil.symptoms.some((diffusion) => {
                     return diffusion.diffusions.some((diffusion) => {
-                        return checkedBoxesValues.includes(diffusion.name)
+                        return selectedCheckboxes.includes(diffusion.name)
                     })    
                 })
             })
@@ -58,6 +68,7 @@ function ThemesResult() {
             setOpen(false);
         } else {
             setThemes(json);
+            setOpen(false);
         }
     }
 
@@ -86,27 +97,27 @@ function ThemesResult() {
                             <form type="submit" onSubmit={handleFilter} className="themes-results__filters__form">
                                 <div className="themes-results__filters__item">
                                     <label for="voie orale">Voie orale</label>
-                                    <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" />
+                                    <input type="checkbox" id="voie orale" name="voie orale" value="voie orale" checked={selectedCheckboxes.includes("voie orale")} onChange={handleCheckboxChange}/>
                                 </div>
                                 <div className="themes-results__filters__item">
                                     <label for="diffusion">Diffusion</label>
-                                    <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" />
+                                    <input type="checkbox" id="diffusion" name="diffusion" value="diffusion" checked={selectedCheckboxes.includes("diffusion")} onChange={handleCheckboxChange}/>
                                 </div>
                                 <div className="themes-results__filters__item">
                                     <label for="massage">Massage</label>
-                                    <input type="checkbox" id="massage" name="massage" value="massage" />
+                                    <input type="checkbox" id="massage" name="massage" value="massage" checked={selectedCheckboxes.includes("massage")} onChange={handleCheckboxChange}/>
                                 </div>
                                 <div className="themes-results__filters__item">
                                     <label for="bain">Bain</label>
-                                    <input type="checkbox" id="bain" name="bain" value="bain" />
+                                    <input type="checkbox" id="bain" name="bain" value="bain" checked={selectedCheckboxes.includes("bain")} onChange={handleCheckboxChange}/>
                                 </div>
                                 <div className="themes-results__filters__item">
                                     <label for="cosmétique">Cosmétique</label>
-                                    <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" />
+                                    <input type="checkbox" id="cosmétique" name="cosmétique" value="cosmétique" checked={selectedCheckboxes.includes("cosmétique")} onChange={handleCheckboxChange}/>
                                 </div>
                                 <div className="themes-results__filters__item">
                                     <label for="inhalation">Inhalation</label>
-                                    <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" />
+                                    <input type="checkbox" id="inhalation" name="inhalation" value="inhalation" checked={selectedCheckboxes.includes("inhalation")} onChange={handleCheckboxChange}/>
                                 </div>
 
                                 <button type="submit">Filtrer</button>
