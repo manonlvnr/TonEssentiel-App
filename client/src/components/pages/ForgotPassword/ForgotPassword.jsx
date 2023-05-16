@@ -42,7 +42,7 @@ function ForgotPassword() {
             <form onSubmit={handleEmail}>
                 <Label label={"Entrez votre adresse email :"}/>
                 <Input type="email" name="email" placeholder="exemple@exemple.com" value={email || ""} onChange={(e) => setEmail(e.target.value)} required />
-                <button type="submit">Envoyer</button>
+                <button type="submit" className="forgot-password__btn">Recevoir le lien de résiliation</button>
             </form>
         </div>
         </>

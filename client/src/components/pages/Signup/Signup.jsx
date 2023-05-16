@@ -34,7 +34,7 @@ function Signup() {
                 <Label label={"Mot de passe"}/>
                 <Input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                <button disabled={loading} type="submit">Signup</button>
+                <button disabled={loading} type="submit" className="signup__btn">Créer un compte</button>
                 {/* {error && <div>{error}</div>} */}
             </form>
         </div>

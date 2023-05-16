@@ -31,9 +31,11 @@ function Signin() {
                 <Input type="email" placeholder="Example : test@test.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <Label label={"Mot de passe"}/>
                 <Input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <Link to="/forgotPassword" className="signin__password">Mot de passe oublié ?</Link>
-                <button disabled={loading} type="submit" className="signin__btn">Connexion</button>
-                <Link to="/signup" className="signup">Créer un compte</Link>
+                <div className="signin__buttons">
+                    <Link to="/forgotPassword" className="signin__password">Mot de passe oublié ?</Link>
+                    <button disabled={loading} type="submit" className="signin__btn">Connexion</button>
+                    <Link to="/signup" className="signup">Créer un compte</Link>
+                </div>
             </form>
 
         </div>

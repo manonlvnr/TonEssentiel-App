@@ -48,7 +48,7 @@ function ResetPassword() {
                 <Input type="password" name="newPassword" placeholder="Nouveau mot de passe" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
                 <Label label={"Confirmez le nouveau mot de passe :"}/>
                 <Input type="password" name="confirmPassword" placeholder="Confirmez le nouveau mot de passe" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-                <button type="submit">Enregistrer le nouveau mot de passe</button>
+                <button type="submit" className="reset-password__btn">Enregistrer le nouveau mot de passe</button>
             </form>
         </div>
         </>

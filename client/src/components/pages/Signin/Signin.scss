@@ -4,13 +4,21 @@
     padding: var(--space-lg) var(--space-md) var(--space-2xl) var(--space-md);
 }
 
+.signin__buttons {
+    display: flex;
+    flex-direction: column;
+}
+
 .signin__password {
+    width: fit-content;
     color: var(--color-text);
     font-size: var(--text-xs);
     margin-top: 0;
 }
 
 .signin__btn, .signup {
+    width: fit-content;
+    align-self: flex-end;
     padding: var(--space-sm);
     margin-top: var(--space-lg);
     border-radius: .5rem;
