@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import Title from '../../atoms/Title/Title'
-import OilSummary from '../../molecules/OilSummary/OilSummary';
 import { IconTrash } from '@tabler/icons-react';
 import './Favorites.scss';
 import Header from "../../organisms/Header/Header";
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import API_URL from '../../../config';
+import SyncLoader from 'react-spinners/SyncLoader';
+
+const OilSummary = lazy(() => import('../../molecules/OilSummary/OilSummary'));
 
 
 function Favorites() {
     const [userState, setUserState] = useState([]);
+    const [loadingFavorites, setLoadingFavorites] = useState(true)
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -24,6 +27,7 @@ function Favorites() {
                 setUserState(json);
                 console.log("userState", json);
             }
+            setLoadingFavorites(false)
         };
 
         fetchFavorites();
@@ -57,6 +61,12 @@ function Favorites() {
         removeFavorites();
     }
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
+
     return (
         <>
         <Header />
@@ -64,19 +74,25 @@ function Favorites() {
         <Title children={"Favoris"} />
         <div className="favorites">
             <div className="favorites__container">
-                {userState.map((user) => (
-                    user.favorites.map((favorite) => (
-                        <div className="favorites__container__card">
-                            <Link to={`/allOils/${favorite.name}`} key={favorite._id}>
-                                <OilSummary oilInfo={favorite}/>
-                            </Link>
-                            {console.log("favorite", favorite)}
-                            <button className='favorites__delete-btn' onClick={(e) => handleRemoveFavorites(e, favorite._id)}>
-                                <IconTrash color='white'/>
-                            </button>
-                        </div>
-                    ))
-                ))}
+                {loadingFavorites ? (
+                    <SyncLoader cssOverride={override} color={'#809D75'}/>
+                ) : (
+                    <Suspense fallback={<SyncLoader cssOverride={override} color={'#809D75'}/>}>
+                        {userState.map((user) => (
+                            user.favorites.map((favorite) => (
+                                <div className="favorites__container__card">
+                                    <Link to={`/allOils/${favorite.name}`} key={favorite._id}>
+                                        <OilSummary oilInfo={favorite}/>
+                                    </Link>
+                                    {console.log("favorite", favorite)}
+                                    <button className='favorites__delete-btn' onClick={(e) => handleRemoveFavorites(e, favorite._id)}>
+                                        <IconTrash color='white'/>
+                                    </button>
+                                </div>
+                            ))
+                        ))}
+                    </Suspense>
+                )}
             </div>
         </div>
         </>

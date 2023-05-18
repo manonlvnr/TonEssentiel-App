@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import OilSummary from '../../molecules/OilSummary/OilSummary';
 import Title from "../../atoms/Title/Title";
 import './DiffusionsResult.scss'
 import Sheet from 'react-modal-sheet';
@@ -8,8 +7,9 @@ import Header from "../../organisms/Header/Header";
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
 import API_URL from "../../../config";
+import SyncLoader from "react-spinners/SyncLoader";
 
-
+const OilSummary = lazy(() => import('../../molecules/OilSummary/OilSummary'));
 
 
 function DiffusionsResult() {
@@ -18,8 +18,7 @@ function DiffusionsResult() {
     const [diffusions, setDiffusions] = useState([]);
     const [isOpen, setOpen] = useState(false);
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-
-    const themes = []
+    const [loadingDiffusions, setLoadingDiffusions] = useState(true)
 
     useEffect(() => {
         const fetchDiffusions = async () => {
@@ -29,6 +28,7 @@ function DiffusionsResult() {
             if (response.ok) {
                 setDiffusions(json);
             }
+            setLoadingDiffusions(false)
         };
 
         fetchDiffusions();
@@ -73,6 +73,11 @@ function DiffusionsResult() {
         }
     }
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
 
     return (
         <>
@@ -80,11 +85,18 @@ function DiffusionsResult() {
         <div>
             <Title children={routeParams.name} />
             <div className="diffusion-results__wrapper">
-                {diffusions.map((oil) => (
-                    <Link to={`/allOils/${oil.name}`} key={oil._id}>
-                        <OilSummary oilInfo={oil}/>
-                    </Link>
-                ))}
+                {loadingDiffusions ? (
+                    <SyncLoader cssOverride={override} color={'#809D75'} />
+                ) : (
+                    <Suspense fallback={<SyncLoader cssOverride={override} color={'#809D75'} />}>
+                        {diffusions.map((oil) => (
+                            <Link to={`/allOils/${oil.name}`} key={oil.id}>
+                                <OilSummary oilInfo={oil} />
+                            </Link>
+                        ))}
+                    </Suspense>
+                )}
+
             <FilterButton onClick={() => setOpen(true)} />
 
             <Sheet isOpen={isOpen} onClose={() => setOpen(false)} >

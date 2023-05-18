@@ -1,10 +1,10 @@
 import "./SymptomsList.scss";
-import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
 import Title from "../../atoms/Title/Title";
 import Header from "../../organisms/Header/Header";
 import { useEffect, useState } from "react";
 import API_URL from "../../../config";
-
+import SyncLoader from 'react-spinners/SyncLoader';
+import AlphabeticalList from "../../molecules/AlphabeticalList/AlphabeticalList";
 
 function SymptomsList() {
     const [oils, setOils] = useState(null);
@@ -19,24 +19,35 @@ function SymptomsList() {
                 setOils(json);
             }
         };
-
+        
         fetchOils();
     }, []);
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
+
     if (!oils) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <Header />
+                <Title children={"Symptômes"} />
+                <SyncLoader cssOverride={override} color={'#809D75'}/>
+            </>
+        );
     }
 
     const uniqueSymptoms = Array.from(
-    new Set(
-        oils
-        .flatMap((oil) => oil.symptoms || [])
-        .map((symptom) => symptom.name)
-    )
-    ).sort();
-
-
+        new Set(
+            oils && oils
+            .flatMap((oil) => oil.symptoms || [])
+            .map((symptom) => symptom.name)
+        )).sort();
+    
     console.log(symptoms);
+
     return (
         <>
             <Header />

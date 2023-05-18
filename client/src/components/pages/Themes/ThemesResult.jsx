@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import OilSummary from '../../molecules/OilSummary/OilSummary';
 import Title from '../../atoms/Title/Title'
 import './ThemesResult.scss';
 import Sheet from 'react-modal-sheet';
@@ -8,6 +7,10 @@ import Header from "../../organisms/Header/Header";
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
 import API_URL from "../../../config";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const OilSummary = lazy(() => import('../../molecules/OilSummary/OilSummary'));
+
 
 function ThemesResult() {
     const routeParams = useParams();
@@ -15,6 +18,7 @@ function ThemesResult() {
     const [themes, setThemes] = useState([]);
     const [isOpen, setOpen] = useState(false);
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+    const [loadingThemes, setLoadingThemes] = useState(true)
 
 
     useEffect(() => {
@@ -26,6 +30,7 @@ function ThemesResult() {
                 setThemes(json);
                 console.log(json);
             }
+            setLoadingThemes(false)
         };
 
         fetchThemes();
@@ -72,6 +77,11 @@ function ThemesResult() {
         }
     }
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
 
     return (
         <>
@@ -79,11 +89,17 @@ function ThemesResult() {
             <div>
                 <Title children={routeParams.theme} />
                 <div className="themes-results__wrapper">
-                    {themes.map((oil) => (
-                        <Link to={`/allOils/${oil.name}`} key={oil.id}>
-                            <OilSummary oilInfo={oil}/>
-                        </Link>
-                    ))}
+                {loadingThemes ? (
+                    <SyncLoader cssOverride={override} color={'#809D75'}/>
+                ) : (
+                    <Suspense fallback={<SyncLoader cssOverride={override} color={'#809D75'}/>}>
+                        {themes.map((oil) => (
+                            <Link to={`/allOils/${oil.name}`} key={oil.id}>
+                                <OilSummary oilInfo={oil} />
+                            </Link>
+                        ))}
+                    </Suspense>
+                )}
 
                 <FilterButton onClick={() => setOpen(true)} />
 

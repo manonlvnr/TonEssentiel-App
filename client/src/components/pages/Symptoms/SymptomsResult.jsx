@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SymptomsResult.scss";
-import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Title from "../../atoms/Title/Title";
 import Sheet from "react-modal-sheet";
 import Header from "../../organisms/Header/Header";
 import FilterButton from "../../atoms/FilterButton/FilterButton";
 import API_URL from '../../../config';
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const OilSummary = lazy(() => import('../../molecules/OilSummary/OilSummary'));
 
 function SymptomsResult() {
     const routeParams = useParams();
@@ -15,6 +17,8 @@ function SymptomsResult() {
     const [symptoms, setSymptoms] = useState([]);
     const [isOpen, setOpen] = useState(false);
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+    const [loadingSymptoms, setLoadingSymptoms] = useState(true)
+
 
     useEffect(() => {
         const fetchSymptoms = async () => {
@@ -26,6 +30,7 @@ function SymptomsResult() {
             if (response.ok) {
                 setSymptoms(json);
             }
+            setLoadingSymptoms(false)
         };
 
         fetchSymptoms();
@@ -77,17 +82,29 @@ function SymptomsResult() {
         }
     };
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
+
     return (
         <>
         <Header />
         <div>
             <Title children={routeParams.name} />
             <div className="symptoms-results__wrapper">
-                {symptoms.map((oil) => (
-                    <Link to={`/allOils/${oil.name}`} key={oil._id}>
-                        <OilSummary oilInfo={oil} />
-                    </Link>
-                ))}
+                {loadingSymptoms ? (
+                    <SyncLoader cssOverride={override} color={'#809D75'}/>
+                ) : (
+                    <Suspense fallback={<SyncLoader cssOverride={override} color={'#809D75'}/>}>
+                        {symptoms.map((oil) => (
+                            <Link to={`/allOils/${oil.name}`} key={oil._id}>
+                                <OilSummary oilInfo={oil} />
+                            </Link>
+                        ))}
+                    </Suspense>
+                )}
 
                 <FilterButton onClick={() => setOpen(true)} />
 

@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import OilSummary from "../../molecules/OilSummary/OilSummary";
 import Header from "../../organisms/Header/Header";
 import Title from "../../atoms/Title/Title";
 import "./SearchResult.scss";
 import API_URL from "../../../config";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const OilSummary = lazy(() => import('../../molecules/OilSummary/OilSummary'));
 
 function SearchResult() {
-    // const [searchParams, setSearchParams] = useSearchParams()
     const [searchResult, setSearchResult] = useState([]);
     const search = useLocation().search
     const searchParams = new URLSearchParams(search)
     const searchState = searchParams.get("keyword");
+    const [loadingSearch, setLoadingSearch] = useState(true)
+
 
     useEffect(() => {
         const fetchSearch = async () => {
@@ -22,6 +25,7 @@ function SearchResult() {
                 console.log(json);
                 setSearchResult(json);
             }
+            setLoadingSearch(false)
         };
 
         fetchSearch();
@@ -29,20 +33,33 @@ function SearchResult() {
 
     console.log(searchResult);
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
+
     return (
         <>
         <Header />
         <Title children={`${searchState}`} />
         <div className="search-result__wrapper">
-        {searchResult.length === 0 ? (
-            <p>Aucun résultat ne correspondant à votre demande ... &#128533;</p>
-        ) : (
-            searchResult.map((result) => (
-                <Link to={`/allOils/${result.name}`} key={result._id}>
-                    <OilSummary oilInfo={result} />
-                </Link>
-            ))
-        )}
+            {loadingSearch ? (
+                    <SyncLoader cssOverride={override} color={'#809D75'}/>
+                ) : (
+                    <Suspense fallback={<SyncLoader cssOverride={override} color={'#809D75'}/>}>
+                        {searchResult.length === 0 ? (
+                            <p>Aucun résultat ne correspondant à votre demande ... &#128533;</p>
+                        ) : (
+                            searchResult.map((result) => (
+                                <Link to={`/allOils/${result.name}`} key={result._id}>
+                                    <OilSummary oilInfo={result} />
+                                </Link>
+                            ))
+                        )}
+                    </Suspense>
+                )}
+        
         </div>
         </>
     );
