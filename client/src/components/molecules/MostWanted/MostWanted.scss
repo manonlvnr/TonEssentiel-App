@@ -1,7 +1,6 @@
 .mostWanted__wrapper {
     border-block: 2px solid var(--color-primary);
     padding: var(--space-xl) var(--space-md);
-    // overflow-x: clip;
 
     .swiper-slide {
         max-width: 8rem;
@@ -10,10 +9,6 @@
         padding: var(--space-md);
     }
 }
-
-// .swiper, .swiper-container {
-//     overflow: visible;
-// }
 
 .mostWanted__description {
     text-align: center;
