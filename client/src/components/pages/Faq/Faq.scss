@@ -1,0 +1,65 @@
+@import '../../../Reset.scss'; 
+
+//
+// Faq
+// -----------------------------------------------------------------------------
+.faq__wrapper {
+    margin-bottom: calc(var(--space-xl) * 2.5);
+    padding-inline: var(--space-md);
+}
+
+// Accordéon
+// -----------------------------------------------------------------------------
+.faq__accordion__title {
+    color: var(--color-text);
+    font-size: var(--text-md);
+    margin-block: var(--space-sm);
+    margin-block: var(--space-md);
+}
+
+.faq__accordion {
+    @include reset-list;
+    background-color: var(--color-contrast);
+    padding: var(--space-sm);
+    border-radius: 4px;
+    margin-block: var(--space-md);
+}
+
+.faq__accordion__item {
+    @include reset-list;
+
+    &:not(:last-child)  {
+        margin-bottom: var(--space-xs);
+    }
+}
+
+.faq__accordion__question {
+    @include reset-button;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    justify-content: space-between;
+    color: var(--color-text);
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+    font-size: var(--text-xs);
+    padding-block: var(--space-sm);
+    text-transform : capitalize;
+    text-align: left;
+}
+
+.faq__accordion__answer {
+    display: none;
+    margin: 0;
+    font-size: var(--text-xs);
+
+    &.open {
+        display: block;
+        height: auto;
+        background-color: var(--bg-color);
+        padding: var(--space-md);
+    }
+
+}
