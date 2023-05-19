@@ -1,0 +1,17 @@
+//
+// Uses
+// -----------------------------------------------------------------------------
+
+.uses__wrapper {
+    margin-bottom: calc(var(--space-xl) * 2.5);
+    padding-inline: var(--space-md);
+}
+
+.uses__content {
+    color: var(--color-text);
+    font-size: (--text-sm);
+    padding: var(--space-md) var(--space-sm);
+    border-radius: 4px;
+    margin-block: var(--space-md);
+    background-color: var(--color-contrast);
+}
