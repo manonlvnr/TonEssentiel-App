@@ -5,7 +5,7 @@ import FamousOils from "../../organisms/FamousOils/FamousOils";
 import HomeHeader from "../../organisms/Header/HomeHeader";
 
 
-const homeCategories = [{name: "Toutes les huiles", path: "/allOils"}, {name: "Symptômes", path: "/symptoms"}, {name: "Diffusons", path: "/diffusions"}, {name: "Thèmes", path: "/themes"}];
+const homeCategories = [{name: "Toutes les huiles", path: "/allOils"}, {name: "Symptômes", path: "/symptoms"}, {name: "Diffusions", path: "/diffusions"}, {name: "Thèmes", path: "/themes"}];
 
 function Homepage() {
     

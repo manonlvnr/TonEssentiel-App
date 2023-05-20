@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import "./MostWanted.scss";
 
-const mostWantedSymptoms = ["acnée", "coup de soleil", "démangeaison", "insomnie", "mal de tête", "nausée", "rhume", "stress", "tendinite"];
+const mostWantedSymptoms = ["stress", "mal de tête", "insomnie", "acnée", "fatigue", "démangeaison", "nausée", "rhume", "tendinite"];
 
 
 function MostWanted() {

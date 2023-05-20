@@ -34,7 +34,7 @@ function FamousOils() {
 
     return (
         <div className="famous-oils">
-            <h2 className="famous-oils__title">Les huiles du moment</h2>
+            <h2 className="famous-oils__title">Les incontournables</h2>
                 {loadingOils ? (
                     <SyncLoader cssOverride={override} color={'#809D75'}/>
                 ) : (
