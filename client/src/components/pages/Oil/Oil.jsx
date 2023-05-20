@@ -56,13 +56,18 @@ function Oil() {
 
         fetchOil();
         fetchUser();
-    }, [routeParams.oil, user, navigate]);
+    }, [routeParams.oil, user]);
 
     const handleFavorites = async (e) => {
         e.preventDefault();
 
         const oilId = await oil.map((oil) => oil._id);
         console.log("oil-id", oilId);
+
+        if (!user) {
+            navigate("/signin");
+            return;
+        }
 
         const favoritesArray = await userState[0].favorites.map(
             (favorite) => favorite._id
@@ -225,10 +230,10 @@ function Oil() {
                                 {oil.OilsAssociated.length ? (
                                     <>
                                         <h3 className="oil__bottom-info__title">Huiles associées :</h3>
-                                        <Swiper slidesPerView={"auto"} spaceBetween={8}>
+                                        <Swiper slidesPerView={"auto"} spaceBetween={16}>
                                             {oil.OilsAssociated.map((associated) => (
                                                 <SwiperSlide key={associated._id}>
-                                                    <Link to={`/allOils/${associated.name}`} key={associated._id}>
+                                                    <Link to={`/allOils/${associated.name}`} key={associated._id} className="oil__bottom-info__link">
                                                         <OilSummary oilInfo={associated} />
                                                     </Link>
                                                 </SwiperSlide>

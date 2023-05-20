@@ -1,6 +1,10 @@
 .mostWanted__wrapper {
     border-block: 2px solid var(--color-primary);
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-xl) 0;
+
+    .swiper.swiper-initialized.swiper-horizontal.swiper-ios.swiper-backface-hidden {
+        padding-left: var(--space-md) !important;
+    }
 
     .swiper-slide {
         max-width: 8rem;
@@ -23,5 +27,6 @@
     font-size: var(--text-md);
     margin: 0 0 var(--space-md) 0;
     color: var(--color-text);
+    padding-left: var(--text-md);
 }
 
