@@ -167,7 +167,7 @@ const sendResetLink = async (req, res) => {
 
         const token = jwt.sign({ _id: emailExist._id }, process.env.SECRET, { expiresIn: "10m"});
 
-        const link = `http://localhost:3000/reset-password/${emailExist._id}/${token}`;
+        const link = `https://ton-essentiel.vercel.app/reset-password/${emailExist._id}/${token}`;
 
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -182,8 +182,11 @@ const sendResetLink = async (req, res) => {
         let mailOptions = {
             from: process.env.EMAIL,
             to: email,
-            subject: "Reset Password",
-            text: `${link}`,
+            subject: "Réinitialisation du mot de passe - Ton Essentiel",
+            text: `Bonjour, 
+            Vous avez demandez à réinitialiser votre mot de passe de votre compte Ton Essentiel.
+            Pour cela veuillez cliquer sur ce lien : ${link}
+            Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce mail.`,
         };
 
         transporter.sendMail(mailOptions, (err, data) => {
