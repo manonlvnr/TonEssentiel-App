@@ -183,7 +183,8 @@ const sendResetLink = async (req, res) => {
             from: process.env.EMAIL,
             to: email,
             subject: "Réinitialisation du mot de passe - Ton Essentiel",
-            text: `Bonjour, 
+            text: `
+            Bonjour,
             Vous avez demandez à réinitialiser votre mot de passe de votre compte Ton Essentiel.
             Pour cela veuillez cliquer sur ce lien : ${link}
             Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce mail.`,
