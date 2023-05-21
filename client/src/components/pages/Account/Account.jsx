@@ -9,12 +9,15 @@ import Input from "../../atoms/Input/Input";
 import { IconDeviceFloppy, IconPower } from "@tabler/icons-react";
 import { Toaster } from 'react-hot-toast';
 import API_URL from "../../../config";
+import SyncLoader from "react-spinners/SyncLoader";
 
 function Account() {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { updateProfile } = useUpdateProfile();
+    const [loadingProfile, setLoadingProfile] = useState(true)
+
     
     const signout = useSignout()
 
@@ -36,6 +39,7 @@ function Account() {
                 setUserState(json);
                 console.log("userState", json);
             }
+            setLoadingProfile(false)
         };
 
         fetchFavorites();
@@ -47,12 +51,22 @@ function Account() {
         updateProfile(userName, email, password);
     }
 
+    const override = {
+        display: "block",
+        margin: "2rem",
+        textAlign: "center",
+    };
+
     return (
         <>
         <Header />
         <Toaster position="top-center"/>
         <Title children={"Mon compte"}/>
         <div className="account__wrapper">
+            {loadingProfile ? (
+                <SyncLoader cssOverride={override} color={'#809D75'}/>
+            ) : (
+                <>
                 {userState.map((user) => (
                     <form className="account__form" onSubmit={handleSubmit}>
                         <h3 className="account__form__title">Mes informations</h3>
@@ -77,6 +91,8 @@ function Account() {
                 <IconPower />
                 <div>Déconnexion</div>
             </button>
+            </>
+        )}
         </div>
         </>
     )

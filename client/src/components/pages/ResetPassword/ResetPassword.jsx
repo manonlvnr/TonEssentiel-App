@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../organisms/Header/Header";
 import { toast, Toaster } from 'react-hot-toast';
 import "./ResetPassword.scss";
@@ -11,6 +11,7 @@ import API_URL from "../../../config";
 function ResetPassword() {
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate();
 
     const routeParams = useParams();
 
@@ -27,14 +28,15 @@ function ResetPassword() {
             body: JSON.stringify({ newPassword, confirmPassword }),
         });
         if (response.ok) {
-        toast.success('Mot de passe modifié');
-        const json = await response.json();
-        console.log(json);
+            toast.success('Mot de passe modifié');
+            const json = await response.json();
+            console.log(json);
         } else {
             toast.error('Une erreur est survenue, le mot de passe n\'a pas été modifié');
         }
     }
     sendResetEmail();
+    navigate("/");
     };
 
     return (
