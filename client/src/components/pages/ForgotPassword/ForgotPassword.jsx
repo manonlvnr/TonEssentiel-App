@@ -23,13 +23,13 @@ function ForgotPassword() {
             body: JSON.stringify({ email }),
         });
         if (response.ok) {
-            toast.success('Email envoyé');
             const json = await response.json();
             console.log(json);
         } else {
             toast.error('Une erreur est survenue, l\'email n\'a pas été envoyé');
         }
     }
+    toast.success('Email envoyé');
     sendResetEmail();
     };
 
